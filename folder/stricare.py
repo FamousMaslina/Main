@@ -105,7 +105,7 @@ for i in range(5):
     walls2.append( Wall('assets/backgrounds/custom/trench.jpg', 64+i*64, 320-i*64))
 
 walls3 = list()
-for i in range(7):
+for i in range(5):
     walls2.append( Wall('assets/backgrounds/custom/trench.jpg', 64+i*2*64, 320))
     walls2.append( Wall('assets/backgrounds/custom/trench.jpg', 320-i*64,384))
 
@@ -138,9 +138,6 @@ while running:
     if count == 10:
         import time
         background_image = wagner()
-        while True:
-            print("WHERE UKRAINE??")
-            background_image = wagner()
     screen.fill((0,0,0)) #comment this and see what hapen
     screen.blit(background_image, (0, 0))
     characters.draw(screen)
