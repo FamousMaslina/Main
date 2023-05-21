@@ -100,7 +100,7 @@ levels[0].add(walls1)
 
 
 walls2 = list()
-for i in range(5):
+for i in range(7):
     walls2.append( Wall('assets/backgrounds/custom/trench.jpg', 64+i*64, 320))
     walls2.append( Wall('assets/backgrounds/custom/trench.jpg', 64+i*64, 320-i*64))
 
