@@ -17,4 +17,5 @@ class bullet(sprite.Sprite): #in the parentheses it is indicated that the class 
        self.rect.x = x
        self.rect.y = y
 
-aim9x = bullet('assets/shooter/bullet.png', ax, ay)
+#aim9x = bullet('assets/shooter/bullet.png', ax, ay)
+#aim9x.rect.y -= 25
