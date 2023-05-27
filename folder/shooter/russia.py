@@ -17,22 +17,24 @@ class enemy(sprite.Sprite): #in the parentheses it is indicated that the class i
        self.rect.x = x
        self.rect.y = y
 
-rx = random.randint(0, 390)
+    #def go_to(x,y):
+
+rx = random.randint(0, 350)
 ry = random.randint(0, 25)
 russia = enemy('assets/shooter/su57.png', rx, ry)
-rx = random.randint(0, 390)
+rx = random.randint(0, 350)
 ry = random.randint(0, 25)
 russia2 = enemy('assets/shooter/su57.png', rx, ry)
-rx = random.randint(0, 390)
+rx = random.randint(0, 350)
 ry = random.randint(0, 25)
 russia3 = enemy('assets/shooter/su57.png', rx, ry)
-rx = random.randint(0, 390)
+rx = random.randint(0, 325)
 ry = random.randint(0, 25)
 russia4 = enemy('assets/shooter/su57.png', rx, ry)
-rx = random.randint(0, 390)
+rx = random.randint(0, 350)
 ry = random.randint(0, 25)
 russia5 = enemy('assets/shooter/su57.png', rx, ry)
-rx = random.randint(0, 400)
+rx = random.randint(0, 350)
 ry = random.randint(0, 25)
 russia6 = enemy('assets/shooter/su57.png', rx, ry)
 

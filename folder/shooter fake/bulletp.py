@@ -1,6 +1,5 @@
 from pygame import *
 
-
 class Bullet(sprite.Sprite): #in the parentheses it is indicated that the class inherits from the Sprite class
 
     image_path = "assets/shooter/bullet.png"
@@ -19,4 +18,4 @@ class Bullet(sprite.Sprite): #in the parentheses it is indicated that the class 
         return self.rect.y
        #method defining the sprite’s movement
     def update(self):
-        self.rect.y -= 20
+        self.rect.y += 1
