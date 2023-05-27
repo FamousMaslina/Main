@@ -26,6 +26,7 @@ class Enemy(sprite.Sprite):
     def update(self):
         global aim9x, cooldown
 
+
         keys = key.get_pressed()
         if keys[K_LEFT] and self.rect.x > 0:
             self.rect.x -= 5
