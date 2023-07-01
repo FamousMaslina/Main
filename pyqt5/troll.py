@@ -36,7 +36,7 @@ class MyApp(QWidget):
         elif name == "911":
             message = "https://www.youtube.com/watch?v=EEogeIIOJzU"
         else:
-            message = "Incorrect Credit Card Number. Reason - under 3 digits or none"
+            message = "Incorrect Password."
         QMessageBox.critical(self, 'Message', message)
 
 
