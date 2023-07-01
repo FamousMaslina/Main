@@ -26,9 +26,9 @@ layout_line.addWidget(radio_button_1, alignment = Qt.AlignRight)
 layout_line.addWidget(radio_button_2, alignment = Qt.AlignRight)
 layout_line.addWidget(radio_button_3, alignment = Qt.AlignRight)
 mywin.setLayout(layout_line)
-def show():
-    exec(open('merge.txt').read())
+#def show():
+    #exec(open('merge.txt').read())
 
-button.clicked.connect(show)
+#button.clicked.connect(show)
 mywin.show()
 app.exec_()
