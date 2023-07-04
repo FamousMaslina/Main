@@ -23,8 +23,8 @@ characters.add(russia4)
 characters.add(russia5)
 characters.add(f16)
 
-
-    
+mixer.music.load('assets/shooter/theme.mp3')
+mixer.music.play(-1)   
 
 
 cooldown = 0
@@ -43,8 +43,6 @@ while running:
     #if sprite.collide_rect(Bullet, russia):
         #count += 1
         #print(count)
-    mixer.music.load('assets/shooter/theme.mp3')
-    mixer.music.play(-1)
     display.flip()
     display.update()
     dt = clock.tick(60) / 1000
