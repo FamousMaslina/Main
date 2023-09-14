@@ -204,7 +204,7 @@ Country = [
     ('SE', 'Sweden'),
     ('CH', 'Switzerland'),
     ('SY', 'Syrian Arab Republic'),
-    ('TW', 'Taiwan'),
+    ('TW', 'Taiwan')
 ]
 
 pmoney = 50000
@@ -243,7 +243,7 @@ def mainGame():
         game = input("> ")
         if game == "1":
             contracts()
-        elif game == "2":
-            
+        #elif game == "2":
+mainGame()
     
     
