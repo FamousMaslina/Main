@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
+<html>
 <body>
-    
+
+
+<input type="password" id="pin" placeholder="Enter PIN">
+<button onclick="redirectToPage()">Submit</button>
+
+<script>
+function redirectToPage() {
+  var pin = document.getElementById("pin").value;
+  
+  if(pin == "#201069#201091") { // replace "1234" with your desired PIN
+    window.location.href = "a.html"; // replace with your desired URL
+  } else {
+    alert("Incorrect PIN.");
+  }
+}
+</script>
+
 </body>
 </html>
