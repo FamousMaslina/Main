@@ -1,0 +1,16 @@
+cname = "Renault 5 GT Turbo"
+cengine = "1.4L inline-4"
+chp = 115 #horse power
+chps = "115 HP"
+ctorque = 187 #Nm
+ctorqueS = "187 Nm"
+cgears = 5
+cgeartype = "manual"
+cgearbox = "5-Speed Manual"
+c060 = 8.0 #Seconds
+c060S = "8.0 Seconds"
+ctop = 204 #KM/H
+ctopS = "204 km/h"
+cweight = 997 #KG
+cWeightS = "997 KG"
+price = 2500
