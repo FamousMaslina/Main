@@ -11,7 +11,7 @@ import time
 from colorama import init, Fore, Back, Style
 import subprocess
 import playsound as plays
-
+import re
 try:
     os.remove("idcpu.py")
 except FileNotFoundError:
@@ -21,7 +21,68 @@ try:
 except FileNotFoundError:
     pass
 time.sleep(0.5)
-subprocess.run(["python", "identifier.py"])
+def find_python_files(directory):
+  """Finds all Python files in the specified directory."""
+  files = os.listdir(directory)
+  python_files = []
+  for file in files:
+    if file.endswith(".py"):
+      python_files.append(os.path.join(directory, file))
+  return python_files
+
+def find_variables(file_path):
+  """Finds all variables in the specified Python file."""
+  variables = []
+  with open(file_path, "r") as f:
+    for line in f:
+      match = re.search(r"(spMB)", line)
+      if match:
+        variables.append(match.group(1))
+  return variables
+
+def main3():
+  """The main function."""
+  directory = os.getcwd()
+  python_files = find_python_files(directory)
+  for file in python_files:
+    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "idmb.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py":
+      variables = find_variables(file)
+      if variables:
+        print(file, variables)
+        cpu = os.path.basename(file)
+        print(cpu)
+        file_id = cpu
+        with open("idcpu.py", "w") as f:
+          f.write("cpu = '{}'".format(file_id))
+
+def find_variables2(file_path):
+  """Finds all variables in the specified Python file."""
+  variables = []
+  with open(file_path, "r") as f:
+    for line in f:
+      match = re.search(r"(motherboard)", line)
+      if match:
+        variables.append(match.group(1))
+  return variables
+
+def main2():
+  """The main function."""
+  directory = os.getcwd()
+  python_files = find_python_files(directory)
+  for file in python_files:
+    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py" and os.path.basename(file) != "idmb.py":
+      variables = find_variables2(file)
+      if variables:
+        print(file, variables)
+        mb = os.path.basename(file)
+        print(mb)
+        file_id = mb
+        with open("idmb.py", "w") as f:
+          f.write("mb = '{}'\n".format(file_id))
+
+
+main3()
+main2()
 time.sleep(0.2)
 from idcpu import cpu
 from idmb import mb
@@ -43,7 +104,7 @@ def sleep_time2(cFreq):
   return sleep_time
 lbreak = '===================='
 biosN = 'LBIOS'
-biosV = "0.3 Rev B"
+biosV = "0.4 Rev B"
 biosFN = 'LegacyBIOS'
 osfile = 'op2.py'
 def clear():
@@ -65,12 +126,6 @@ osfileL = 'opticom.py'
 
 
 #from identifier import *
-def beep():
-    try:
-        plays.playsound('beep.mp3')
-        time,sleep(0.5)
-    except FileNotFoundError:
-        pass
 
 def main():
     while True:
@@ -191,17 +246,17 @@ def main():
                 clear()
                 print("Settings Change")
                 print(lbreak)
-                print("mem_check {}".format(settings["mem_check"]))         
+                print("1- mem_check {}".format(settings["mem_check"]))         
                 print()
                 changes = input("bios.py/settings/> ")
-                if changes == "mem_check 0":
+                if changes == "1 0":
                     settings["mem_check"] = "0"
                     with open('bios.ini', 'w') as conf:
                         config.write(conf)
                         print("Done!")
                         time.sleep(sleep_time2)
                         clear()
-                elif changes == "mem_check 1":
+                elif changes == "1 1":
                     settings["mem_check"] = "1"
                     with open('bios.ini', 'w') as conf:
                         config.write(conf)
@@ -247,7 +302,6 @@ else:
 if os.path.exists(conf):
     bios = 1
     print(conf, "found. Continuing...")
-    beep()
     time.sleep(sleep_time)
 
 else:
@@ -255,7 +309,7 @@ else:
     print(conf, "not found. Continuing with basic settings...")
     bios = 0
     time.sleep(1.5)
-    beep()
+
     #if os.path.exists(osfile):
         #exec(open(osfile).read())
     #else:

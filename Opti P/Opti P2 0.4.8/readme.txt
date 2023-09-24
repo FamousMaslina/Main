@@ -10,7 +10,6 @@ op2.py - Main File (Needed)
 bios.py - Secondary File (Needed by op2.py to run)
 bios.ini - Config File for bios.py (Not needed)
 dial.mp3 - SFX File for op2.py (Needed when executing 'internet' in op2.py)
-beep.mp3 - SFX File when booting. (Not needed)
 'cpus' folder - Important folder (Needed):
 	c1862.py - 186Cpu, 2MHz
 	8088-4.77.py - 8088Cpu, 4.77MHz

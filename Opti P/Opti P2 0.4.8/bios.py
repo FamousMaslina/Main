@@ -126,12 +126,6 @@ osfileL = 'opticom.py'
 
 
 #from identifier import *
-def beep():
-    try:
-        plays.playsound('beep.mp3')
-        time,sleep(0.5)
-    except FileNotFoundError:
-        pass
 
 def main():
     while True:
@@ -308,7 +302,6 @@ else:
 if os.path.exists(conf):
     bios = 1
     print(conf, "found. Continuing...")
-    beep()
     time.sleep(sleep_time)
 
 else:
@@ -316,7 +309,7 @@ else:
     print(conf, "not found. Continuing with basic settings...")
     bios = 0
     time.sleep(1.5)
-    beep()
+
     #if os.path.exists(osfile):
         #exec(open(osfile).read())
     #else:
