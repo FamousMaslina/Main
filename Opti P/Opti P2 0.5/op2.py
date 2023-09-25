@@ -1,5 +1,5 @@
 import os
-from op2api import *
+
 
 from importlib import import_module
 import playsound
@@ -45,7 +45,7 @@ from time import sleep
 import time
 import subprocess
 from colorama import init, Fore, Back, Style
-
+from op2api import *
 subprocess.run(["python", "op2api.py"])
 time.sleep(0.1)
 import re
@@ -249,6 +249,7 @@ def help():
     print("  gpuinfo - Extra information about the current installed GPU")
     print("  modem - For detecting a Modem")
     print("  internet - Connect to the Internet")
+    print("  encryp - Encrypt Strings into numbers")
     print()
 
 def bios():
