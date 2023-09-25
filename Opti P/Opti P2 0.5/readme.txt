@@ -1,4 +1,4 @@
-Opti P2 - an "OS" made in Python. (written for Version 0.4.6)
+Opti P2 - an "OS" made in Python. (written for Version 0.4.8)
 
 made for fun, of course, and it's pretty nice, tbh. It's inspired by MSDOS and so on.
 
@@ -8,10 +8,8 @@ How to use:
 Classification:
 op2.py - Main File (Needed)
 bios.py - Secondary File (Needed by op2.py to run)
-identifier.py - Secondary File (Needed by op2.py and bios.py)
 bios.ini - Config File for bios.py (Not needed)
 dial.mp3 - SFX File for op2.py (Needed when executing 'internet' in op2.py)
-beep.mp3 - SFX File when booting. (Not needed)
 'cpus' folder - Important folder (Needed):
 	c1862.py - 186Cpu, 2MHz
 	8088-4.77.py - 8088Cpu, 4.77MHz
@@ -41,7 +39,7 @@ beep.mp3 - SFX File when booting. (Not needed)
 How to?
 Check if the root directory has any cpus or mbs files. If not, Opti P2 will not run. If it dosen't check the 'cpu' and 'mb' folder and
 copy one of the files from there to the root directory where op2.py, bios.py and identifier.py is.
-Execute op2.py and it should run fine. (Executing bios.py or identifier.py directly will not do anything!)
+Execute op2.py and it should run fine. (Executing bios.py directly will not do anything!)
 After executing op2.py, and you see the O:/>  then it's good to go! Execute the command 'help' for more info.
 When executing op2.py, you'll see the bios loading. If it says bios.ini found, then it's ok. If not, then execute op2.py,
 execute 'bios' and select option 2 by typing '2'. It creates the config file automatically and it should be fine.
@@ -57,4 +55,5 @@ GPUs & Modems documentation:
 Each GPU and Modem is unique aswell. But now, those values and all aren't used somewhere yet. It could be in the future.
 
 UpdateLog:
--Added beeep
+-bios.py will identify the CPU and MB, rather than executing another  python file.
+-removed op2 function of executing the identifier at startup.

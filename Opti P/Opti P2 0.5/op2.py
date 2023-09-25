@@ -42,7 +42,7 @@ from time import sleep
 import time
 import subprocess
 from colorama import init, Fore, Back, Style
-subprocess.run(["python", "identifier.py"])
+
 
 time.sleep(0.1)
 import re
@@ -113,7 +113,7 @@ def mainM():
     
 
 osName = "Opti P2"
-osVersion = "0.4.6"
+osVersion = "0.4.8"
 
 def sleep_timeAppLoad(cFreq):
 
