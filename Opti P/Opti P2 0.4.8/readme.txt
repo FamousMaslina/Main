@@ -56,5 +56,5 @@ GPUs & Modems documentation:
 Each GPU and Modem is unique aswell. But now, those values and all aren't used somewhere yet. It could be in the future.
 
 UpdateLog:
--bios.py will identify the CPU and MB, rather than executing another  python file.
+-bios.py will identify the CPU and MB, rather than executing another python file.
 -removed op2 function of executing the identifier at startup.
