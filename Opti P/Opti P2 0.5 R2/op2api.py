@@ -1,4 +1,5 @@
 import os
+import random
 from os import name, system
 from importlib import import_module
 import playsound
@@ -36,9 +37,10 @@ module_name2 = mb.replace('.py', '')
 cpu_module = import_module(module_name)
 mb_module = import_module(module_name2)
 import op2v
-apiver = "0.1"
-apiverI = 0.1
+apiver = "0.2"
+apiverI = 0.2
 compver = "0.5"
+compver2 = "0.5 R2"
 def sleep_timeAppLoad(cFreq):
 
   sleep_time = 45 / cpu_module.cFreq
@@ -54,8 +56,19 @@ def check():
     if compver == op2v.op2VER:
         print("API version", apiver)
         print("API Check done!")
+    elif compver2 == op2v.op2VER:
+        print("API version", apiver)
+        print("API Check done!")
+        input()
     else:
         print("API version", apiver)
         print("API Requires atleast", compver+". Found op2 Version:", op2v.op2VER)
         input("Press enter to continue...")
         exit()
+
+#def min(rFreq):
+    #if cpu_module.cFreq >= rFreq:
+        #return True
+    #else:
+        #return False
+
