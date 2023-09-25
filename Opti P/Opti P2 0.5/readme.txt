@@ -1,6 +1,8 @@
-Opti P2 - an "OS" made in Python. (written for Version 0.4.8)
+Opti P2 - an "OS" made in Python. (written for Version 0.5| API Version 0.1)
 
 made for fun, of course, and it's pretty nice, tbh. It's inspired by MSDOS and so on.
+
+Scroll all the way down for the update log!
 
 
 How to use:
@@ -8,7 +10,10 @@ How to use:
 Classification:
 op2.py - Main File (Needed)
 bios.py - Secondary File (Needed by op2.py to run)
+op2api.py - API for op2.py (NEEDED)
+op2v.py - Version file for op2.py and op2api.py (NEEDED!)
 bios.ini - Config File for bios.py (Not needed)
+encryp.py - Extra (Not needed)
 dial.mp3 - SFX File for op2.py (Needed when executing 'internet' in op2.py)
 'cpus' folder - Important folder (Needed):
 	c1862.py - 186Cpu, 2MHz
@@ -54,6 +59,35 @@ And yes, it does affect loading times.
 GPUs & Modems documentation:
 Each GPU and Modem is unique aswell. But now, those values and all aren't used somewhere yet. It could be in the future.
 
+API documentation:
+The op2 API is 'very feature rich'!
+Features:
+-cls/clear, for clearing the console.
+-importing from idgpu, idmod, idcpu, idmb
+-sleep_timeAppLoad(cFreq)/def sleep_timeInAppLoad(cFreq), for simulating CPU speeds.
+
+How to import the API:
+The best way in my opinion is by:
+import op2api as api
+
+How to use anything?
+Usually, api.clear(), api.cls() and so on.
+
+sleep_timeAppLoad(cFreq) Documentation:
+cFreq is the value found in any CPU file from the 'cpus' folder. It represents the frequency.
+API contains two of these, AppLoad(1), and InAppLoad(2).
+The math is basic:
+        -(1): 45/cFreq
+        -(2): 15/cFreq
+(1) it's used when opening a program. (2) it's used within the program.
+The variables to use them are: (make sure to add any custom import name. If you set one.)
+        - sleep_timeAppL = sleep_timeAppLoad(cpu_module.cFreq)
+        - sleep_timeIAppL = sleep_timeInAppLoad(cpu_module.cFreq)
+(cpu_module should not be modified at all!)
+The custom import name, is added before 'sleep_timeAppL/sleep_timeIAppL' and 'sleep_timeInAppLoad/sleep_timeAppLoad'
+
 UpdateLog:
--bios.py will identify the CPU and MB, rather than executing another  python file.
--removed op2 function of executing the identifier at startup.
+-Added an API. Used for making custom apps, and use stuff like clear(), or even sleep time depending on the CPU speed, just 
+by importing op2api in your little silly custom file for op2. It's supposed to make my life easier too. Trust me.
+-Added encryp.py. Accesed through op2.py, using 'encryp'. It cannot run without the API. It basically encrypts any text. And also
+decrypts.

@@ -1,4 +1,8 @@
-
+try:
+    import op2api as api
+    api.check()
+except ImportError:
+    print("API not found/ not working")
 a = 124
 b = 1241
 c = 2145
@@ -52,10 +56,36 @@ def decrypt(encrypted_text):
         else:
             decrypted_text += token
     return decrypted_text
-
-text_to_encrypt = "1231321321 254 1231231321 1231231321 1023154  123123546 1023154 1245468546 1231231321 123154 "
-encrypted_text = encrypt(text_to_encrypt)
-print("Encrypted:", encrypted_text)
-
-decrypted_text = decrypt(encrypted_text)
-print("Decrypted:", decrypted_text)
+api.clear()
+vers = "0.1"
+def main():
+    api.time.sleep(api.sleep_timeIAppL)
+    while True:
+        api.clear()
+        print("ENCRYP", vers)
+        print()
+        print("1 - Encrypt")
+        print("2 - Decrypt")
+        print("3 - Exit")
+        print()
+        encr = input("> ")
+        if encr == "1":
+            api.clear()
+            text_to_encrypt = input("Text to encrypt: ")
+            encrypted_text = encrypt(text_to_encrypt)
+            api.time.sleep(api.sleep_timeIAppL)
+            print("Encrypted:", encrypted_text)
+            print()
+            input("Press enter to go back...")
+        elif encr == "2":
+            api.clear()
+            text_to_ncrypt = input("Text to decrypt: ")
+            decrypted_text = decrypt(text_to_ncrypt)
+            api.time.sleep(api.sleep_timeIAppL)
+            print("Decrypted:", decrypted_text)
+            print()
+            input("Press enter to go back...")
+        elif encr == "3":
+            api.clear()
+            exit()
+main()

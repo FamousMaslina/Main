@@ -1,4 +1,6 @@
 import os
+from op2api import *
+
 from importlib import import_module
 import playsound
 try:
@@ -22,6 +24,7 @@ try:
 except ImportError:
     while True:
         input("SYSTEM HALTED")
+
 from idcpu import cpu
 from idmb import mb
 global intern
@@ -43,7 +46,7 @@ import time
 import subprocess
 from colorama import init, Fore, Back, Style
 
-
+subprocess.run(["python", "op2api.py"])
 time.sleep(0.1)
 import re
 
@@ -111,32 +114,21 @@ def mainM():
           mdC = True
 
     
-
+import op2v
 osName = "Opti P2"
-osVersion = "0.4.8"
+osVersion = op2v.op2VER
+clear()
+check()
 
-def sleep_timeAppLoad(cFreq):
 
-  sleep_time = 45 / cpu_module.cFreq
-  return sleep_time
-
-def sleep_timeInAppLoad(cFreq):
-
-  sleep_time = 15 / cpu_module.cFreq
-  return sleep_time
 
 init(autoreset=True)
 
-
+def api():
+   check()
 
 config = ConfigParser()
-sleep_timeAppL = sleep_timeAppLoad(cpu_module.cFreq)
-sleep_timeIAppL = sleep_timeInAppLoad(cpu_module.cFreq)
-def clear():
-    if name == 'nt':
-        _ = system('cls')
-    else:
-        _ = system('clear')
+
 def cls():
     if name == 'nt':
         _ = system('cls')
@@ -265,6 +257,8 @@ def bios():
     from bios import main
     main()
 
+def encryp():
+   subprocess.run(["python", "encryp.py"])
 
 def run_file(file_name):
     try:
@@ -283,7 +277,7 @@ def main():
     while True:
         inp = input(f"O:/> ")
         inp = inp.lower()
-        if inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet'):
+        if inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet', 'api', 'encryp'):
             eval(inp)()
         elif inp.startswith('run '):
             run_file(inp[4:])
