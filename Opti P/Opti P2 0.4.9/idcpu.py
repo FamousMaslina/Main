@@ -1,1 +1,0 @@
-cpu = 'Cyrix Cx486DLC-40.py'

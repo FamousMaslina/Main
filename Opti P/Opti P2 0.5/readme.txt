@@ -1,4 +1,4 @@
-Opti P2 - an "OS" made in Python. (written for Version 0.4.9)
+Opti P2 - an "OS" made in Python. (written for Version 0.4.8)
 
 made for fun, of course, and it's pretty nice, tbh. It's inspired by MSDOS and so on.
 
@@ -55,5 +55,5 @@ GPUs & Modems documentation:
 Each GPU and Modem is unique aswell. But now, those values and all aren't used somewhere yet. It could be in the future.
 
 UpdateLog:
--life of quality updates for op2 and bios
-[LAST MINOR UPDATE BEFORE 0.5!]
+-bios.py will identify the CPU and MB, rather than executing another  python file.
+-removed op2 function of executing the identifier at startup.

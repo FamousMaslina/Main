@@ -104,7 +104,7 @@ def sleep_time2(cFreq):
   return sleep_time
 lbreak = '===================='
 biosN = 'LBIOS'
-biosV = "0.4 Rev B"
+biosV = "0.4 Rev A"
 biosFN = 'LegacyBIOS'
 osfile = 'op2.py'
 def clear():
@@ -246,17 +246,17 @@ def main():
                 clear()
                 print("Settings Change")
                 print(lbreak)
-                print("1- mem_check {}".format(settings["mem_check"]))         
+                print("mem_check {}".format(settings["mem_check"]))         
                 print()
                 changes = input("bios.py/settings/> ")
-                if changes == "1 0":
+                if changes == "mem_check 0":
                     settings["mem_check"] = "0"
                     with open('bios.ini', 'w') as conf:
                         config.write(conf)
                         print("Done!")
                         time.sleep(sleep_time2)
                         clear()
-                elif changes == "1 1":
+                elif changes == "mem_check 1":
                     settings["mem_check"] = "1"
                     with open('bios.ini', 'w') as conf:
                         config.write(conf)

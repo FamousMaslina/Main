@@ -113,7 +113,7 @@ def mainM():
     
 
 osName = "Opti P2"
-osVersion = "0.4.9"
+osVersion = "0.4.8"
 
 def sleep_timeAppLoad(cFreq):
 
@@ -149,11 +149,13 @@ def open_text(file_name):
     if os.path.isfile(file_name):
         time.sleep(sleep_timeAppL)
         subprocess.run(["type", file_name], shell=True)
+        print()
     else:
         print(f"File '{file_name}' not found.")
 
 def gpuinfo():
     time.sleep(sleep_timeIAppL)
+    print()
     if gpuC == False:
         print("GPU not detected. Run 'gpu' to detect.")
     else:
@@ -173,7 +175,6 @@ def gpuinfo():
 
 def nameO():
     print(osName, osVersion)
-    print()
 def gpu():
     print(gpuC)
     if gpuC == False:
@@ -210,7 +211,6 @@ def modem():
         exit()
     else:
        time.sleep(sleep_timeAppL)
-       print()
        print("Modem already dectected")
 
 def internet():
@@ -289,18 +289,14 @@ def main():
             run_file(inp[4:])
         elif inp == 'dir':
             time.sleep(sleep_timeAppL)
-            print()
             print("Current directory: O:\\")
             files = os.listdir(".")
             for f in files:
                 file_type = os.path.isfile(f) and "File" or "Folder"
                 size = os.path.getsize(f)
                 print(f"{file_type:8s} {f:20s} {size:8,d}")
-            print()
         elif inp.startswith('open '):
-            print()
             open_text(inp[5:])
-            print()
         elif inp == "dvcman":
             time.sleep(sleep_timeAppL)
             print()
