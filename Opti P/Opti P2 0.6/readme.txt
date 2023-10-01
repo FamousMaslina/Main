@@ -1,4 +1,4 @@
-Opti P2 - an "OS" made in Python. (written for Version 0.5 R2| API Version 0.2)
+Opti P2 - an "OS" made in Python. (written for Version 0.6| API Version 0.3)
 
 made for fun, of course, and it's pretty nice, tbh. It's inspired by MSDOS and so on.
 
@@ -13,7 +13,7 @@ bios.py - Secondary File (Needed by op2.py to run)
 op2api.py - API for op2.py (NEEDED)
 op2v.py - Version file for op2.py and op2api.py (NEEDED!)
 bios.ini - Config File for bios.py (Not needed)
-encryp.py
+encryp.py 
 nguess.py  - Extra (Not needed)
 write.py 
 dial.mp3 - SFX File for op2.py (Needed when executing 'internet' in op2.py)
@@ -37,6 +37,12 @@ dial.mp3 - SFX File for op2.py (Needed when executing 'internet' in op2.py)
 'mbs' folder - Important folder (Needed):
 	286basic.py - 286Motherboard, 1024KB
 	386basic.py - 386Motherboard, 2048KB
+'hdd' folder - Important folder (Needed):
+	hard4.py - IDE, 4MB
+	hard8.py - IDE, 8MB
+	hard16.py - IDE, 16MB
+	hard32.py - IDE, 32MB
+	hard64.py - IDE, 64MB
 'gpus' folder - Extras folder (Not Needed):
 	ATI Mach 32.py - GPU, 10MHz, 2MB
 	S3 ViRGE.py - GPU, 5MHz, 2MB
@@ -44,8 +50,8 @@ dial.mp3 - SFX File for op2.py (Needed when executing 'internet' in op2.py)
 	modem144.py - Modem, 14.4K
 
 How to?
-Check if the root directory has any cpus or mbs files. If not, Opti P2 will not run. If it dosen't check the 'cpu' and 'mb' folder and
-copy one of the files from there to the root directory where op2.py, bios.py and identifier.py is.
+Check if the root directory has any cpus or mbs files. If not, Opti P2 will not run. If it dosen't check the 'cpu', 'hdd' and 'mb' folder and
+copy one of the files from there to the root directory where op2.py, bios.py is.
 Execute op2.py and it should run fine. (Executing bios.py directly will not do anything!)
 After executing op2.py, and you see the O:/>  then it's good to go! Execute the command 'help' for more info.
 When executing op2.py, you'll see the bios loading. If it says bios.ini found, then it's ok. If not, then execute op2.py,
@@ -61,35 +67,14 @@ And yes, it does affect loading times.
 GPUs & Modems documentation:
 Each GPU and Modem is unique aswell. But now, those values and all aren't used somewhere yet. It could be in the future.
 
+HDD documentation:
+The only thing that HDD manipulate is the space: OP2 will throw a warning if it has under 2000KB.
+
 API documentation:
-The op2 API is 'very feature rich'!
-Features:
--imports: random, os, name, system, time, op2v, idcpu, idmb, idgpu, idmb.
--cls/clear, for clearing the console.
--importing from idgpu, idmod, idcpu, idmb
--sleep_timeAppLoad(cFreq)/sleep_timeInAppLoad(cFreq), for simulating CPU speeds.
-
-How to import the API:
-The best way in my opinion is by:
-import op2api as api
-
-How to use anything?
-Usually, api.clear(), api.cls() and so on.
-
-sleep_timeAppLoad(cFreq) Documentation:
-cFreq is the value found in any CPU file from the 'cpus' folder. It represents the frequency.
-API contains two of these, AppLoad(1), and InAppLoad(2).
-The math is basic:
-        -(1): 45/cFreq
-        -(2): 15/cFreq
-(1) it's used when opening a program. (2) it's used within the program.
-The variables to use them are: (make sure to add any custom import name. If you set one.)
-        - sleep_timeAppL = sleep_timeAppLoad(cpu_module.cFreq)
-        - sleep_timeIAppL = sleep_timeInAppLoad(cpu_module.cFreq)
-(cpu_module should not be modified at all!)
-The custom import name, is added before 'sleep_timeAppL/sleep_timeIAppL' and 'sleep_timeInAppLoad/sleep_timeAppLoad'
+MOVED TO 'apidoc.txt'
 
 UpdateLog:
--Added random module for API.
--Added API intger version variable for checking.
--Added 'write &  nguess' in OP2.
+-Added bunch of new modules to the API
+-Moved the API documentation to apidoc.txt
+-Added HDDs
+-Added a calculator that is able to do any type of calculation ('calc' in op2)

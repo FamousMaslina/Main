@@ -1,4 +1,4 @@
 hddnameS = "GENERIC IDE DISK"
-hddspace = 64
-hddspaceS = "64MB"
+hddspace = 8000
+hddspaceS = "8MB"
 hard = True

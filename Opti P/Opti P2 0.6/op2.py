@@ -1,8 +1,5 @@
 import os
-
-
 from importlib import import_module
-import playsound
 try:
     from idgpu import gpu
     module_name3 = gpu.replace('.py', '')
@@ -36,22 +33,17 @@ cpu_module = import_module(module_name)
 mb_module = import_module(module_name2)
 module_name3 = hd.replace('.py', '')
 hd_module = import_module(module_name3)
-import os.path
-from configparser import ConfigParser
-import sys
-import platform
-import random
-from tabulate import tabulate
-from os import system, name
-from time import sleep
-import time
-import subprocess
-from colorama import init, Fore, Back, Style
 from op2api import *
 subprocess.run(["python", "op2api.py"])
 time.sleep(0.1)
 import re
-
+clear()
+freesp = hd_module.hddspace - space
+freesp = round(freesp, 2)
+if freesp < 2500:
+   print("LOW STORAGE!")
+   print(freesp, "KB Remaining")
+   input("Press enter to continue...")
 def find_python_files(directory):
   """Finds all Python files in the specified directory."""
   files = os.listdir(directory)
@@ -121,6 +113,7 @@ osName = "Opti P2"
 osVersion = op2v.op2VER
 clear()
 check()
+
 
 
 
@@ -254,6 +247,7 @@ def help():
     print("  encryp - Encrypt Strings into numbers")
     print("  nguess - Play a little game (Expects API Version 0.2)")
     print("  write - Write Text Files")
+    print("  calc - Calculator")
     print()
 
 def bios():
@@ -263,7 +257,10 @@ def bios():
     main()
 
 def encryp():
-   subprocess.run(["python", "encryp.py"])
+   try:
+        subprocess.run(["python", 'encryp.py'])
+   except FileNotFoundError:
+      pass
 
 def run_file(file_name):
     try:
@@ -274,11 +271,32 @@ def run_file(file_name):
     except subprocess.CalledProcessError as e:
         print("An error occurred:", e)
 def nguess():
-   subprocess.run(["python", 'nguess.py'])
+   try:
+        subprocess.run(["python", 'nguess.py'])
+   except FileNotFoundError:
+      pass
    clear()
 
 def write():
-   subprocess.run(["python", 'write.py'])
+   try:
+        subprocess.run(["python", 'write.py'])
+   except FileNotFoundError:
+      pass
+
+def calc():
+  clear()
+  print("Type '0000' to exit.")
+  while True:
+    calci = input("O:/int/> ")
+    result = eval(calci)
+    if result == 0000:
+       clear()
+       break
+    else:
+        print("=", result)
+    print()
+
+
 
 def main():
     clear()
@@ -286,7 +304,7 @@ def main():
     while True:
         inp = input(f"O:/> ")
         inp = inp.lower()
-        if inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet', 'api', 'encryp', 'nguess', 'write'):
+        if inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet', 'api', 'encryp', 'nguess', 'write', 'calc'):
             eval(inp)()
         elif inp.startswith('run '):
             run_file(inp[4:])
@@ -316,6 +334,8 @@ def main():
             print("  Hard Disk - "+hd_module.hddnameS)
             time.sleep(sleep_timeIAppL)
             print("  Hard Disk Storage - "+hd_module.hddspaceS)
+            time.sleep(sleep_timeIAppL)
+            print("  Free Hard Disk Storage -",freesp, "KB")
             if gpuC == False:
                 pass
             else:
