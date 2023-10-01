@@ -31,11 +31,14 @@ except ImportError as e:
    pass
 from idcpu import cpu
 from idmb import mb
+from idhd import hd
 import time
 module_name = cpu.replace('.py', '')  # Remove the .py extension
 module_name2 = mb.replace('.py', '')
 cpu_module = import_module(module_name)
 mb_module = import_module(module_name2)
+module_name3 = hd.replace('.py', '')
+hd_module = import_module(module_name3)
 import op2v
 apiver = "0.2"
 apiverI = 0.2
