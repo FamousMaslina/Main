@@ -31,16 +31,29 @@ except ImportError as e:
    pass
 from idcpu import cpu
 from idmb import mb
+from idhd import hd
 import time
+import os.path
+from configparser import ConfigParser
+import sys
+import platform
+import random
+from tabulate import tabulate
+from os import system, name
+from time import sleep
+import time
+import subprocess
+from colorama import init, Fore, Back, Style
 module_name = cpu.replace('.py', '')  # Remove the .py extension
 module_name2 = mb.replace('.py', '')
 cpu_module = import_module(module_name)
 mb_module = import_module(module_name2)
+module_name3 = hd.replace('.py', '')
+hd_module = import_module(module_name3)
 import op2v
-apiver = "0.2"
-apiverI = 0.2
-compver = "0.5"
-compver2 = "0.5 R2"
+apiver = "0.3"
+apiverI = 0.3
+compver = "0.6"
 def sleep_timeAppLoad(cFreq):
 
   sleep_time = 45 / cpu_module.cFreq
@@ -56,18 +69,28 @@ def check():
     if compver == op2v.op2VER:
         print("API version", apiver)
         print("API Check done!")
-    elif compver2 == op2v.op2VER:
-        print("API version", apiver)
-        print("API Check done!")
     else:
         print("API version", apiver)
         print("API Requires atleast", compver+". Found op2 Version:", op2v.op2VER)
         input("Press enter to continue...")
         exit()
 
-#def min(rFreq):
-    #if cpu_module.cFreq >= rFreq:
-        #return True
-    #else:
-        #return False
+
+import os
+
+def get_file_size_in_kb(file_path):
+  """Returns the size of the file in KB."""
+  file_size_in_bytes = os.path.getsize(file_path)
+  file_size_in_kb = file_size_in_bytes / 1024
+  return file_size_in_kb
+
+cwd = os.getcwd()
+files = os.listdir(cwd)
+total_size_in_kb = 0
+for file in files:
+  file_size_in_kb = get_file_size_in_kb(os.path.join(cwd, file))
+  total_size_in_kb += file_size_in_kb
+space = round(total_size_in_kb, 2)
+
+
 
