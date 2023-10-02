@@ -1,27 +1,5 @@
 import os
 from importlib import import_module
-
-cur = os.getcwd()
-prog = cur + "\programs"
-syst = cur + "\system"
-
-
-savesys = syst
-file_name = "root.py"
-file_path = os.path.join(savesys, file_name)
-with open(file_path, "w") as f:
-    f.write(f"root = {cur}")
-f.close()
-
-saveprg = prog
-file_name = "root.py"
-file_path = os.path.join(saveprg, file_name)
-with open(file_path, "w") as g:
-    g.write(f"root = {cur}")
-g.close()
-
-
-
 try:
     from idgpu import gpu
     module_name3 = gpu.replace('.py', '')
@@ -43,7 +21,10 @@ try:
 except ImportError:
     while True:
         input("SYSTEM HALTED")
-
+try:
+   os.remove('idcd.py')
+except FileNotFoundError:
+   pass
 from idcpu import cpu
 from idmb import mb
 from idhd import hd
@@ -129,7 +110,42 @@ def mainM():
           global mdC
           mdC = True
 
-    
+
+def find_variables5(file_path):
+  """Finds all variables in the specified Python file."""
+  variables = []
+  with open(file_path, "r") as f:
+    for line in f:
+      match = re.search(r"(cddrive)", line)
+      if match:
+        variables.append(match.group(1))
+  return variables
+
+def main5():
+  """The main function."""
+  directory = os.getcwd()
+  python_files = find_python_files(directory)
+  for file in python_files:
+    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py" and os.path.basename(file) != "idmb.py" and os.path.basename(file) != "idhd.py" and os.path.basename(file) != "idcd.py":
+      variables = find_variables5(file)
+      if variables:
+        print(file, variables)
+        cd = os.path.basename(file)
+        print(cd)
+        file_id = cd
+        with open("idcd.py", "w") as f:
+          f.write("cd = '{}'\n".format(file_id))
+main5()
+global cdT
+cdT = False
+try:
+    from idcd import cd
+    module_name5 = cd.replace('.py', '')
+    cd_module = import_module(module_name5)
+    cdT = True
+except ImportError as e:
+   pass
+
 import op2v
 osName = "Opti P2"
 osVersion = op2v.op2VER
@@ -318,7 +334,16 @@ def calc():
         print("=", result)
     print()
 
-
+def d():
+   a = os.getcwd()
+   b = a + '\D'
+   c = b + '\setup.py'
+   try:
+        time.sleep(sleep_timeCD)
+        subprocess.run(["python", c])
+   except FileNotFoundError:
+      print("setup.py not found")
+      pass   
 
 def main():
     clear()
@@ -326,7 +351,7 @@ def main():
     while True:
         inp = input(f"O:/> ")
         inp = inp.lower()
-        if inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet', 'api', 'encryp', 'nguess', 'write', 'calc'):
+        if inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet', 'api', 'encryp', 'nguess', 'write', 'calc', 'd'):
             eval(inp)()
         elif inp.startswith('run '):
             run_file(inp[4:])
@@ -358,6 +383,13 @@ def main():
             print("  Hard Disk Storage - "+hd_module.hddspaceS)
             time.sleep(sleep_timeIAppL)
             print("  Free Hard Disk Storage -",freesp, "KB")
+            time.sleep(sleep_timeIAppL)
+            if cdT == True:
+                print("  CD Drive - "+cd_module.cdname)
+                time.sleep(sleep_timeIAppL)
+                print("  CD Speed -",cd_module.cdspeedS)
+            else:
+               pass
             if gpuC == False:
                 pass
             else:

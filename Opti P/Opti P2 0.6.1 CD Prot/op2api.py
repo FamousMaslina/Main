@@ -1,7 +1,4 @@
 import os
-cur1 = os.getcwd()
-print(cur1)
-input()
 import random
 from os import name, system
 from importlib import import_module
@@ -47,6 +44,7 @@ from time import sleep
 import time
 import subprocess
 from colorama import init, Fore, Back, Style
+import re
 module_name = cpu.replace('.py', '')  # Remove the .py extension
 module_name2 = mb.replace('.py', '')
 cpu_module = import_module(module_name)
@@ -95,5 +93,57 @@ for file in files:
   total_size_in_kb += file_size_in_kb
 space = round(total_size_in_kb, 2)
 
+def find_python_files(directory):
+  """Finds all Python files in the specified directory."""
+  files = os.listdir(directory)
+  python_files = []
+  for file in files:
+    if file.endswith(".py"):
+      python_files.append(os.path.join(directory, file))
+  return python_files
+
+def find_variables5(file_path):
+  """Finds all variables in the specified Python file."""
+  variables = []
+  with open(file_path, "r") as f:
+    for line in f:
+      match = re.search(r"(cddrive)", line)
+      if match:
+        variables.append(match.group(1))
+  return variables
+
+def main5():
+  """The main function."""
+  directory = os.getcwd()
+  python_files = find_python_files(directory)
+  for file in python_files:
+    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py" and os.path.basename(file) != "idmb.py" and os.path.basename(file) != "idhd.py" and os.path.basename(file) != "idcd.py" and os.path.basename(file) != "op2api.py":
+      variables = find_variables5(file)
+      if variables:
+        print(file, variables)
+        cd = os.path.basename(file)
+        print(cd)
+        file_id = cd
+        with open("idcd.py", "w") as f:
+          f.write("cd = '{}'\n".format(file_id))
+main5()
+global cdT
+cdT = False
+try:
+    from idcd import cd
+    module_name5 = cd.replace('.py', '')
+    cd_module = import_module(module_name5)
+    cdT = True
+except ImportError as e:
+   pass
+cdtest = cdT
+print(cdtest)
 
 
+
+####
+if cdT == True:
+  def sleep_timeInAppLoad2(cdspeed):
+    sleep_time2 = 2 / cd_module.cdspeed
+    return sleep_time2
+sleep_timeCD = sleep_timeInAppLoad2(cd_module.cdspeed)
