@@ -1,8 +1,8 @@
 try:
     import op2api as api
     api.check()
-except ImportError:
-    print("API not found/ not working")
+except ImportError as e:
+    print("API not found/ not working", e)
 a = 124
 b = 1241
 c = 2145

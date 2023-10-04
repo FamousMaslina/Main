@@ -20,9 +20,6 @@ try:
     os.remove("idmb.py")
 except FileNotFoundError:
     pass
-
-cur = os.getcwd()
-syst = cur + "\system"
 time.sleep(0.5)
 def find_python_files(directory):
   """Finds all Python files in the specified directory."""
@@ -144,7 +141,7 @@ def clear():
         _ = system('clear')
 config = ConfigParser()
 try:
-    config.read(syst +"\bios.ini")
+    config.read("bios.ini")
     settings = config["bios"]
 except FileNotFoundError:
     pass

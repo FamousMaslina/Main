@@ -1,14 +1,18 @@
-API Documentation (Written for Version 0.3)
-===========================================
-It is very Feature Rich.
-===========================================
-It contains these modules: (some might repeat, please bear with me... (or not even used))
-
 import os
 import random
 from os import name, system
 from importlib import import_module
 import playsound
+def clear():
+    if name == 'nt':
+        _ = system('cls')
+    else:
+        _ = system('clear')
+def cls():
+    if name == 'nt':
+        _ = system('cls')
+    else:
+        _ = system('clear')
 try:
     from idgpu import gpu
     module_name3 = gpu.replace('.py', '')
@@ -47,21 +51,10 @@ mb_module = import_module(module_name2)
 module_name3 = hd.replace('.py', '')
 hd_module = import_module(module_name3)
 import op2v
-===========================================
-It has these functions:
-
-def clear():
-    if name == 'nt':
-        _ = system('cls')
-    else:
-        _ = system('clear')
-
-def cls():
-    if name == 'nt':
-        _ = system('cls')
-    else:
-        _ = system('clear')
-
+apiver = "0.4"
+apiverI = 0.4
+compver = "0.6"
+compver2 = "0.6 R2"
 def sleep_timeAppLoad(cFreq):
 
   sleep_time = 45 / cpu_module.cFreq
@@ -73,6 +66,26 @@ def sleep_timeInAppLoad(cFreq):
   return sleep_time
 sleep_timeAppL = sleep_timeAppLoad(cpu_module.cFreq)
 sleep_timeIAppL = sleep_timeInAppLoad(cpu_module.cFreq)
+
+def linebr(number):
+   print("=" * number)
+
+def check():
+    if compver == op2v.op2VER or compver2 == op2v.op2VER:
+        print("API version", apiver)
+        print("API Check done!")
+    else:
+        print("API version", apiver)
+        print("API Requires atleast", compver+". Found op2 Version:", op2v.op2VER)
+        input("Press enter to continue...")
+        exit()
+
+
+
+
+
+import os
+
 def get_file_size_in_kb(file_path):
   """Returns the size of the file in KB."""
   file_size_in_bytes = os.path.getsize(file_path)
@@ -86,23 +99,39 @@ for file in files:
   file_size_in_kb = get_file_size_in_kb(os.path.join(cwd, file))
   total_size_in_kb += file_size_in_kb
 space = round(total_size_in_kb, 2)
-===========================================
-How to import the API:
-The best way in my opinion is by:
-import op2api as api
-===========================================
-How to use anything?
-Usually, api.clear(), api.cls() and so on.
-===========================================
-sleep_timeAppLoad(cFreq) Documentation:
-cFreq is the value found in any CPU file from the 'cpus' folder. It represents the frequency.
-API contains two of these, AppLoad(1), and InAppLoad(2).
-The math is basic:
-        -(1): 45/cFreq
-        -(2): 15/cFreq
-(1) it's used when opening a program. (2) it's used within the program.
-The variables to use them are: (make sure to add any custom import name. If you set one.)
-        - sleep_timeAppL = sleep_timeAppLoad(cpu_module.cFreq)
-        - sleep_timeIAppL = sleep_timeInAppLoad(cpu_module.cFreq)
-(cpu_module should not be modified at all!)
-The custom import name, is added before 'sleep_timeAppL/sleep_timeIAppL' and 'sleep_timeInAppLoad/sleep_timeAppLoad'
+
+def apihelp():
+   linebr(20)
+   print("'api' - Check the version")
+   print("'api.interface' - Access the API's Interface")
+   linebr(20)
+
+def interface():
+   clear()
+   while True:
+      clear()
+      print("API version", apiver)
+      print("OP2 version", op2v.op2VER)
+      linebr(20)
+      print("1 - Test features")
+      print("2 - Update Log")
+      print("3 - Exit")
+      linebr(20)
+      inter = input("> ")
+      if inter == "1":
+        linebr(20)
+        print("1 - CWD -", cwd)
+        print("2 - Total Used Space (in KB)-", space)
+        print("3 - Separation Line (5)")
+        linebr(5)
+        print("  - Separation Line (3)")
+        linebr(3)
+        input("Press enter to return...")
+      elif inter == "2":
+        linebr(20)
+        print("Added 'linebr(INTEGER)' function for seperating strings, with")
+        print("a custom number of '='")
+        input("Press enter to return...")
+      elif inter == "3":
+         clear()
+         return

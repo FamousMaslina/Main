@@ -1,24 +1,36 @@
 import os
 from importlib import import_module
+import sys
+print("op2.py")
 
+try:
+    from bios import main
+except ImportError as e:
+    while True:
+        print(e)
+        input("SYSTEM HALTED")
 cur = os.getcwd()
 prog = cur + "\programs"
 syst = cur + "\system"
-
+opapi = syst + "\op2api.py"
+sys.path.insert(1, syst)
+pass
+from op2api import *
+clear()
 
 savesys = syst
 file_name = "root.py"
 file_path = os.path.join(savesys, file_name)
 with open(file_path, "w") as f:
-    f.write(f"root = {cur}")
+    f.write(f"root = '{cur}'")
 f.close()
-
 saveprg = prog
 file_name = "root.py"
 file_path = os.path.join(saveprg, file_name)
-with open(file_path, "w") as g:
-    g.write(f"root = {cur}")
-g.close()
+with open(file_path, "w") as g1:
+    g1.write(f"root = '{cur}'")
+g1.close()
+
 
 
 
@@ -38,11 +50,7 @@ try:
 except ImportError as e:
    mdC = False
    pass
-try:
-    from bios import main
-except ImportError:
-    while True:
-        input("SYSTEM HALTED")
+
 
 from idcpu import cpu
 from idmb import mb
@@ -55,7 +63,7 @@ cpu_module = import_module(module_name)
 mb_module = import_module(module_name2)
 module_name3 = hd.replace('.py', '')
 hd_module = import_module(module_name3)
-from op2api import *
+
 subprocess.run(["python", "op2api.py"])
 time.sleep(0.1)
 import re
@@ -278,9 +286,11 @@ def bios():
     from bios import main
     main()
 
+enc = prog + "\encryp.py"
+
 def encryp():
    try:
-        subprocess.run(["python", 'encryp.py'])
+        subprocess.run(["python", enc])
    except FileNotFoundError:
       pass
 
