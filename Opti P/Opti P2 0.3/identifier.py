@@ -25,7 +25,7 @@ def main():
   directory = os.getcwd()
   python_files = find_python_files(directory)
   for file in python_files:
-    if os.path.basename(file) != "identifier.py":
+    if os.path.basename(file) != "identifier.py"  and os.path.basename(file) != "perftest.py" and os.path.basename(file) != "op2api.py":
       variables = find_variables(file)
       if variables:
         print(file, variables)
@@ -50,7 +50,7 @@ def main2():
   directory = os.getcwd()
   python_files = find_python_files(directory)
   for file in python_files:
-    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py":
+    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py" and os.path.basename(file) != "perftest.py" and os.path.basename(file) != "op2api.py":
       variables = find_variables2(file)
       if variables:
         print(file, variables)
