@@ -86,3 +86,4 @@ in the current working directory and done! ((ONLY perftest.py works 100% on all 
 -Made all the versions Click-To-Run, so you don't have to copy anything. Just run op2.py.
 (If you want to change the hardware, make sure to delete the default ones and replace the ones
 to your liking. And yes, every motherboard and CPU is backward compatible, until 0.3)
+-Updated nguess

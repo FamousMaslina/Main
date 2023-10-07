@@ -5,9 +5,39 @@ except ImportError as e:
     input("Press enter to exit...")
     exit()
 global vers
-vers = 0.1
+vers = 0.2
 global nbreak
 nbreak = "============"
+def numc():
+    api.time.sleep(api.sleep_timeIAppL)
+    count = 0
+    api.clear()
+    a = int(input("From: "))
+    b = int(input("Until: "))
+    while True:
+        api.clear()
+        num = api.random.randint(a, b)
+        print("I'm thinking of a number...")
+        while True:
+            guess = int(input("Your guess: "))
+            if guess == num:
+                print("Very well! The number was", num)
+                print("It took you", count, "times to guess the number!")
+                print()
+                pg = input("Play again? Y/N ")
+                pg = pg.lower()
+                if pg == "y":
+                    break
+                else:
+                    return
+            elif guess < num:
+                print("Higher...")
+                print()
+                count = count+1
+            elif guess > num:
+                print("Lower...")
+                print()
+                count = count+1
 def num1():
     api.time.sleep(api.sleep_timeIAppL)
     count = 0
@@ -134,7 +164,8 @@ def main():
         print("2 - Medium (2 Digit Number)")
         print("3 - Hard (3 Digit Number)")
         print("4 - Extreme (4 Digit Number)")
-        print("5 - Exit")
+        print("5 - Custom")
+        print("6 - Exit")
         print(nbreak)
         choice = input("> ")
         if choice == "1":
@@ -145,8 +176,10 @@ def main():
             num3()
         elif choice == "4":
             num4()
-        elif choice == "5":
+        elif choice == "6":
             exit()
+        elif choice == "5":
+            numc()
 
 try:
     import op2api as api
