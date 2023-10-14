@@ -1,1 +1,1 @@
-cpu = 'Cyrix Cx486DRx2-66.py'
+cpu = 'basiclaptop.py'

@@ -35,7 +35,7 @@ def find_variables(file_path):
   variables = []
   with open(file_path, "r") as f:
     for line in f:
-      match = re.search(r"(spMB)", line)
+      match = re.search(r"(laptophardware)", line)
       if match:
         variables.append(match.group(1))
   return variables
@@ -60,7 +60,7 @@ def find_variables2(file_path):
   variables = []
   with open(file_path, "r") as f:
     for line in f:
-      match = re.search(r"(motherboard)", line)
+      match = re.search(r"(laptophardware)", line)
       if match:
         variables.append(match.group(1))
   return variables
@@ -85,7 +85,7 @@ def find_variables4(file_path):
   variables = []
   with open(file_path, "r") as f:
     for line in f:
-      match = re.search(r"(hard)", line)
+      match = re.search(r"(laptophardware)", line)
       if match:
         variables.append(match.group(1))
   return variables

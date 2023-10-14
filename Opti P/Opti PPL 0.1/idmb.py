@@ -1,1 +1,1 @@
-mb = '386basic.py'
+mb = 'basiclaptop.py'

@@ -59,7 +59,7 @@ def find_variables(file_path):
   variables = []
   with open(file_path, "r") as f:
     for line in f:
-      match = re.search(r"(gpu)", line)
+      match = re.search(r"(laptophardware)", line)
       if match:
         variables.append(match.group(1))
   return variables
@@ -86,7 +86,7 @@ def find_variables2(file_path):
   variables = []
   with open(file_path, "r") as f:
     for line in f:
-      match = re.search(r"(modem)", line)
+      match = re.search(r"(laptophardware)", line)
       if match:
         variables.append(match.group(1))
   return variables
@@ -110,8 +110,11 @@ def mainM():
 
     
 import op2v
-osName = "Opti P2"
+osName = "Opti PPL"
 osVersion = op2v.op2VER
+pplver = "0"
+if osVersion == "0.6.1":
+   pplver = "0.1"
 clear()
 check()
 
@@ -162,8 +165,13 @@ def gpuinfo():
         print("  ROPs -",gpu_module.grop)
         print()
 
+
+def about():
+   print(osName, pplver)
+   print("Based on Opti P2 Version", osVersion)
+
 def nameO():
-    print(osName, osVersion)
+    print(osName, pplver)
 def gpu():
     print(gpuC)
     if gpuC == False:
@@ -246,12 +254,13 @@ def help():
     print("  gpuinfo - Extra information about the current installed GPU")
     print("  modem - For detecting a Modem")
     print("  internet - Connect to the Internet")
-    print("  encryp - Encrypt Strings into numbers")
-    print("  nguess - Play a little game (Expects API Version 0.2)")
     print("  write - Write Text Files")
     print("  calc - Calculator")
     print("  api - Check API version")
     print("  api /? - Check API's help")
+    print("  about - About PPL")
+    print("  tools - For changing bightness or enabling power saving")
+    print("  battery - Check battery level")
     print()
 
 def bios():
@@ -260,11 +269,7 @@ def bios():
     from bios import main
     main()
 
-def encryp():
-   try:
-        subprocess.run(["python", 'encryp.py'])
-   except FileNotFoundError:
-      pass
+
 
 def run_file(file_name):
     try:
@@ -274,12 +279,7 @@ def run_file(file_name):
         print("File not found.")
     except subprocess.CalledProcessError as e:
         print("An error occurred:", e)
-def nguess():
-   try:
-        subprocess.run(["python", 'nguess.py'])
-   except FileNotFoundError:
-      pass
-   clear()
+
 
 def write():
    try:
@@ -303,12 +303,24 @@ def calc():
 
 
 def main():
+    batterysave = False
+    remain = cpu_module.battery
+    cscr = 5
+
     clear()
     nameO()
     while True:
         inp = input(f"O:/> ")
         inp = inp.lower()
-        if inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet', 'api', 'encryp', 'nguess', 'write', 'calc'):
+        if batterysave == True:
+            remain = remain - 0.3 - (cscr / 3)
+        else:
+           remain = remain - 0.5 - (cscr / 3)
+        if remain < 0:
+            exit()
+        elif remain <= 3:
+           print("LOW BATTERY WARNING!")
+        elif inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet', 'api', 'encryp', 'nguess', 'write', 'calc'):
             eval(inp)()
         elif inp.startswith('run '):
             run_file(inp[4:])
@@ -360,12 +372,42 @@ def main():
                 time.sleep(sleep_timeIAppL)
             print("  Operating System - "+osName, osVersion)
             print()
-        elif inp == "var":
-           print("osName", osName)
-           print("osVersion", osVersion)
-           print("config", config)
-           print("gpuC", gpuC)
-           print("intern", intern)
+        elif inp == "tools":
+            time.sleep(sleep_timeIAppL)
+            clear()
+            while True:
+                clear()
+                print("Tools")
+                linebr(25)
+                print("1 - Enable Battery Saver: Current Status -", batterysave)
+                print("2 - Change Brightness")
+                print("3 - Exit")
+                linebr(25)
+                tools = input("> ")
+                if tools == "1":
+                    if batterysave == False:
+                        batterysave = True
+                    else:
+                       batterysave = False
+                elif tools == "2":
+                   while True:
+                        clear()
+                        print("MIN - ", cpu_module.minlight)
+                        print("MAX -", cpu_module.maxlight)
+                        print("CURRENT -", cscr)
+                        linebr(25)
+                        scr = int(input("Enter new value: "))
+                        if scr > cpu_module.maxlight or scr < cpu_module.minlight:
+                            clear()
+                        else:
+                           cscr = scr + cscr
+                           break
+                elif tools == "3":
+                   break
+        elif inp == "battery":
+           status = round(remain, 1)
+           print("Remaining Battery Power:",status, "%")
+
         else:
             print("Unknown command")
 
