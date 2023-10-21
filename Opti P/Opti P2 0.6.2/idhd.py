@@ -1,0 +1,1 @@
+hd = 'miner.py'
