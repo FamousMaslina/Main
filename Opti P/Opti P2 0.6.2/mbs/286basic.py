@@ -6,5 +6,5 @@ onboardGPU = False
 gName = ""
 gFreq = ""
 gMem = ""
-motherboard = True
+ioaoooss = True
 mFreqUnit = "MHz"

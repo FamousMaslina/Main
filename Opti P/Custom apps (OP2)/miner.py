@@ -30,22 +30,18 @@ def main():
     print("MINER", vers)
     print("UNIVERSAL")
     api.linebr(20)
+    print("Detected hardware:", api.cpu_module.cName)
+    api.linebr(20)
     mon = 0  
     while True:
         print("TOTAL MINED:", mon)
         job = generate_random_string(15)
-        dif = generate_random_dif(2)
-        on = api.random.randint(1,2)      
-        print("Detected hardware:", api.cpu_module.cName)
-        print("Detected hardware:", api.gpu_module.gName)
+        dif = generate_random_dif(2)     
         api.time.sleep(2)
-        if on == 1:
-            print("JOB:", job,"DIF:", dif, "ON:", api.cpu_module.cName)
-        else:
-            print("JOB:", job,"DIF:", dif, "ON:", api.gpu_module.gName)
+        print("JOB:", job,"DIF:", dif, "ON:", api.cpu_module.cName)
         api.time.sleep(api.random.randint(1, 9))
         print("JOB", job, "COMPLETED!")
-        mon = mon + 0.0005
+        mon = mon + 0.0001
 
 try:
     import op2api as api
@@ -54,7 +50,7 @@ try:
         print("Cannot load: Too low API version. Expected Version 0.5")
         input("")
         exit()
-    elif api.apiverI == 0.5 and api.lega == True and api.gpuC == True:
+    elif api.apiverI == 0.5 and api.lega == True:
         main()
     elif api.apiverI == 0.5 or api.apiverI > 0.5 and op2v.op2VER == "0.6.1" or op2v.op2VER == "0.6" or op2v.op2VER == "0.6 R2" or op2v.op2VER == "0.5 R2" or op2v.op2VER == "0.5" and api.gpuC == True:
         main()

@@ -13,6 +13,7 @@ bios.py - Secondary File (Needed by op2.py to run)
 op2api.py - API for op2.py (NEEDED)
 op2v.py - Version file for op2.py and op2api.py (NEEDED!)
 bios.ini - Config File for bios.py (Not needed)
+hardwiz.py - File for finding Modems and GPUs
 encryp.py 
 nguess.py  - Extra (Not needed)
 write.py 
@@ -90,6 +91,10 @@ All the custom apps, made by me are located in the
 (Make sure to copy op2api.py in the cwd if the OP2 Version you're running is lower than 0.6)
 
 UpdateLog:
--Added 'resethardware'
+-Added 'resethardware' command
+-Added 'hardware' command
 -Bugfixes
+-Fixed Identifier problems, so from now on, it will always identify the right hardware, not random files.
+(That means that any current hardware from 0.6.2 and up WILL NOT WORK on any other version lower than 0.6.2!!!)
+(This includes: CPUs, GPUs, MBs, Modems, HDDs)
 -Added CPUs

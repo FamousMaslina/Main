@@ -6,7 +6,7 @@ gvs = 0
 grop = 1
 gVram = 2
 gbit = "8 Bits"
-gpu = True
+odasfsdfds3 = True
 import time
 from os import *
 ver = 1.0

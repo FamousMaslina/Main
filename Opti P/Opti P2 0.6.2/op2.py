@@ -55,59 +55,6 @@ def find_python_files(directory):
       python_files.append(os.path.join(directory, file))
   return python_files
 
-def find_variables(file_path):
-  """Finds all variables in the specified Python file."""
-  variables = []
-  with open(file_path, "r") as f:
-    for line in f:
-      match = re.search(r"(gpu)", line)
-      if match:
-        variables.append(match.group(1))
-  return variables
-
-def mainG():
-  """The main function."""
-  directory = os.getcwd()
-  python_files = find_python_files(directory)
-  for file in python_files:
-    if os.path.basename(file) != "op2.py" and os.path.basename(file) != "idmb.py" and os.path.basename(file) != "bios.py" and os.path.basename(file) != "op2api.py":
-      variables = find_variables(file)
-      if variables:
-        print(file, variables)
-        gpu = os.path.basename(file)
-        print(gpu)
-        file_id = gpu
-        with open("idgpu.py", "w") as f:
-          f.write("gpu = '{}'".format(file_id))
-          global gpuC
-          gpuC = True
-
-def find_variables2(file_path):
-  """Finds all variables in the specified Python file."""
-  variables = []
-  with open(file_path, "r") as f:
-    for line in f:
-      match = re.search(r"(modem)", line)
-      if match:
-        variables.append(match.group(1))
-  return variables
-
-def mainM():
-  """The main function."""
-  directory = os.getcwd()
-  python_files = find_python_files(directory)
-  for file in python_files:
-    if os.path.basename(file) != "op2.py" and os.path.basename(file) != "idmod.py" and os.path.basename(file) != "bios.py" and os.path.basename(file) != "op2api.py": 
-      variables = find_variables2(file)
-      if variables:
-        print(file, variables)
-        m = os.path.basename(file)
-        print(m)
-        file_id = m
-        with open("idmod.py", "w") as f:
-          f.write("modem = '{}'".format(file_id))
-          global mdC
-          mdC = True
 
     
 import op2v
@@ -165,43 +112,7 @@ def gpuinfo():
 
 def nameO():
     print(osName, osVersion)
-def gpu():
-    print(gpuC)
-    if gpuC == False:
-        try:
-            os.remove('idgpu.py')
-        except FileNotFoundError:
-           pass
-        time.sleep(sleep_timeAppL)
-        print("Detecting GPU...")
-        mainG()
-        print("Restarting to apply changes...")
-        time.sleep(sleep_timeIAppL)
-        restart()
-        time.sleep(0.1)
-        exit()
-    else:
-       time.sleep(sleep_timeAppL)
-       print("GPU already dectected")
 
-def modem():
-    print(mdC)
-    if mdC == False:
-        try:
-            os.remove('idmod.py')
-        except FileNotFoundError:
-           pass
-        time.sleep(sleep_timeAppL)
-        print("Detecting Modem...")
-        mainM()
-        print("Restarting to apply changes...")
-        time.sleep(sleep_timeIAppL)
-        restart()
-        time.sleep(0.1)
-        exit()
-    else:
-       time.sleep(sleep_timeAppL)
-       print("Modem already dectected")
 
 def internet():
     global intern
@@ -263,9 +174,9 @@ def help():
     print("  dir - Show files in the current working directory (CWD)")
     print("  dvcman - Current Installed Hardware")
     print("  exit - Exit the OS and the CMD")
-    print("  gpu - For detecting a GPU")
+    print("  gpu - Moved to 'hardware' command")
     print("  gpuinfo - Extra information about the current installed GPU")
-    print("  modem - For detecting a Modem")
+    print("  modem - Moved to 'hardware' command")
     print("  internet - Connect to the Internet")
     print("  encryp - Encrypt Strings into numbers")
     print("  nguess - Play a little game (Expects API Version 0.2)")
@@ -274,6 +185,7 @@ def help():
     print("  api - Check API version")
     print("  api /? - Check API's help")
     print("  resethardware - Delete idgpu and idmod")
+    print("  hardware - Identify GPUs and Modems")
     print()
 
 def bios():
@@ -285,6 +197,12 @@ def bios():
 def encryp():
    try:
         subprocess.run(["python", 'encryp.py'])
+   except FileNotFoundError:
+      pass
+
+def hardware():
+   try:
+        subprocess.run(["python", 'hardwiz.py'])
    except FileNotFoundError:
       pass
 
@@ -322,6 +240,10 @@ def calc():
         print("=", result)
     print()
 
+def gpu():
+    print("Moved to 'hardware' command")
+def modem():
+    print("Moved to 'hardware' command")
 
 
 def main():
@@ -330,7 +252,7 @@ def main():
     while True:
         inp = input(f"O:/> ")
         inp = inp.lower()
-        if inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet', 'api', 'encryp', 'nguess', 'write', 'calc', 'resethardware'):
+        if inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet', 'api', 'encryp', 'nguess', 'write', 'calc', 'resethardware', 'hardware'):
             eval(inp)()
         elif inp.startswith('run '):
             run_file(inp[4:])

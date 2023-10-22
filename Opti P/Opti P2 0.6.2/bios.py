@@ -35,7 +35,7 @@ def find_variables(file_path):
   variables = []
   with open(file_path, "r") as f:
     for line in f:
-      match = re.search(r"(spMB)", line)
+      match = re.search(r"(asdawd2k3a403)", line)
       if match:
         variables.append(match.group(1))
   return variables
@@ -45,7 +45,7 @@ def main3():
   directory = os.getcwd()
   python_files = find_python_files(directory)
   for file in python_files:
-    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "idmb.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py":
+    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "idmb.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py" and os.path.basename(file) != "hardwiz.py":
       variables = find_variables(file)
       if variables:
         print(file, variables)
@@ -60,7 +60,7 @@ def find_variables2(file_path):
   variables = []
   with open(file_path, "r") as f:
     for line in f:
-      match = re.search(r"(motherboard)", line)
+      match = re.search(r"(ioaoooss)", line)
       if match:
         variables.append(match.group(1))
   return variables
@@ -70,7 +70,7 @@ def main2():
   directory = os.getcwd()
   python_files = find_python_files(directory)
   for file in python_files:
-    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py" and os.path.basename(file) != "idmb.py":
+    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py" and os.path.basename(file) != "idmb.py" and os.path.basename(file) != "hardwiz.py":
       variables = find_variables2(file)
       if variables:
         print(file, variables)
@@ -85,7 +85,7 @@ def find_variables4(file_path):
   variables = []
   with open(file_path, "r") as f:
     for line in f:
-      match = re.search(r"(hard)", line)
+      match = re.search(r"(kajsaed)", line)
       if match:
         variables.append(match.group(1))
   return variables
@@ -95,7 +95,7 @@ def main4():
   directory = os.getcwd()
   python_files = find_python_files(directory)
   for file in python_files:
-    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py" and os.path.basename(file) != "idmb.py" and os.path.basename(file) != "idhd.py":
+    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py" and os.path.basename(file) != "idmb.py" and os.path.basename(file) != "idhd.py" and os.path.basename(file) != "hardwiz.py":
       variables = find_variables4(file)
       if variables:
         print(file, variables)

@@ -1,1 +1,1 @@
-hd = 'miner.py'
+hd = 'hard64.py'

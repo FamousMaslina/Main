@@ -27,6 +27,6 @@ cName = processor_name
 cFreq = processor_frequency
 cFreqS = str(cFreq)
 cFreqUnit = "MHz"
-spMB = True
+asdawd2k3a403 = True
   #print("The name of the processor is: {}".format(processor_name))
   #print("The frequency of the processor is: {} {}".format(cFreqS, cFreqUnit))
