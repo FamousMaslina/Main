@@ -320,7 +320,7 @@ def main():
             exit()
         elif remain <= 3:
            print("LOW BATTERY WARNING!")
-        elif inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet', 'api', 'encryp', 'nguess', 'write', 'calc'):
+        elif inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet', 'api', 'encryp', 'nguess', 'write', 'calc', 'about'):
             eval(inp)()
         elif inp.startswith('run '):
             run_file(inp[4:])
@@ -370,7 +370,8 @@ def main():
                 time.sleep(sleep_timeIAppL)
                 print("  Dial-Up Adapter -",md_module.dialupadp)
                 time.sleep(sleep_timeIAppL)
-            print("  Operating System - "+osName, osVersion)
+            print("  Laptop Model - "+cpu_module.laptopName)
+            print("  Operating System - "+osName, pplver)
             print()
         elif inp == "tools":
             time.sleep(sleep_timeIAppL)

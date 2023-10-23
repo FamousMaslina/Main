@@ -43,6 +43,7 @@ compver2 = "0.6 R2"
 compver3 = "0.6.1"
 compver4 = "0.5"
 compver5 = "0.5 R2"
+compver6 = "0.6.2"
 
 
 from idcpu import cpu
@@ -105,7 +106,7 @@ def configFile(var, filename):
 def check():
     if lega == True:
        pass
-    elif compver == op2v.op2VER or compver2 == op2v.op2VER or compver3 == op2v.op2VER or compver4 == op2v.op2VER or compver5 == op2v.op2VER:
+    elif compver == op2v.op2VER or compver2 == op2v.op2VER or compver3 == op2v.op2VER or compver4 == op2v.op2VER or compver5 == op2v.op2VER or compver6 == op2v.op2VER:
         print("API version", apiver)
         print("API Check done!")
     else:
