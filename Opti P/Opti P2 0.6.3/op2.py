@@ -186,6 +186,8 @@ def help():
     print("  api /? - Check API's help")
     print("  resethardware - Delete idgpu and idmod")
     print("  hardware - Identify GPUs and Modems")
+    print("  tools - For changing bightness or enabling power saving")
+    print("  battery - Check battery level")
     print()
 
 def bios():
@@ -247,6 +249,12 @@ def modem():
 
 
 def main():
+    if cpu_module.laptophardware == True:
+        batterysave = False
+        remain = cpu_module.battery
+        cscr = 5
+    else:
+        pass
     clear()
     nameO()
     while True:
@@ -310,8 +318,50 @@ def main():
            print("config", config)
            print("gpuC", gpuC)
            print("intern", intern)
+        elif inp == "tools":
+            time.sleep(sleep_timeIAppL)
+            if cpu_module.laptophardware == True:
+                clear()
+                while True:
+                    clear()
+                    print("Tools")
+                    linebr(25)
+                    print("1 - Enable Battery Saver: Current Status -", batterysave)
+                    print("2 - Change Brightness")
+                    print("3 - Exit")
+                    linebr(25)
+                    tools = input("> ")
+                    if tools == "1":
+                        if batterysave == False:
+                            batterysave = True
+                        else:
+                            batterysave = False
+                    elif tools == "2":
+                        while True:
+                            clear()
+                            print("MIN - ", cpu_module.minlight)
+                            print("MAX -", cpu_module.maxlight)
+                            print("CURRENT -", cscr)
+                            linebr(25)
+                            scr = int(input("Enter new value: "))
+                            if scr > cpu_module.maxlight or scr < cpu_module.minlight:
+                                clear()
+                            else:
+                                cscr = scr + cscr
+                                break
+                    elif tools == "3":
+                        break
+            else:
+                print("Option unavailable")
+        elif inp == "battery":
+            if cpu_module.laptophardware == True:
+                status = round(remain, 1)
+                print("Remaining Battery Power:",status, "%")
+            else:
+               print("Battery not installed+")
         else:
             print("Unknown command")
+
 
 try:
     import op2api
