@@ -3,3 +3,4 @@ cFreq = 60
 cFreqS = "60"
 cFreqUnit = "MHz"
 asdawd2k3a403 = "386"
+laptophardware = False
