@@ -180,6 +180,7 @@ def internet():
 def info():
     print()
     nameO()
+    time.sleep(sleep_timeIAppL)
     if ex == True:
         print("Computer name: {}".format(settings["computer_name"]))
     else:
@@ -363,6 +364,7 @@ def main():
            print("config", config)
            print("gpuC", gpuC)
            print("intern", intern)
+           print("VERSTRING:", op2v.op2VERSTRING)
         elif inp == "settings":
             if ex == True:
                 cls()
