@@ -6,5 +6,6 @@ onboardGPU = False
 gName = ""
 gFreq = ""
 gMem = ""
+bcode = ""
 ioaoooss = True
 mFreqUnit = "MHz"

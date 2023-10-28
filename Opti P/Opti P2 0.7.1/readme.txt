@@ -1,4 +1,4 @@
-Opti P2 - an "OS" made in Python. (written for Version 0.7| API Version 0.5)
+Opti P2 - an "OS" made in Python. (written for Version 0.7.1| API Version 0.5)
 
 made for fun, of course, and it's pretty nice, tbh. It's inspired by MSDOS and so on.
 
@@ -49,6 +49,10 @@ dial.mp3 - SFX File for op2.py (Needed when executing 'internet' in op2.py)
 'mbs' folder - Important folder (Needed):
 	286basic.py - 286Motherboard, 1024KB
 	386basic.py - 386Motherboard, 2048KB
+	[MB NAME] - Folder that contains a custom
+		    motherboard, with a custom
+		    BIOS, that MUST be copied in the same DIRECTORY
+		    where op2.py is
 'hdd' folder - Important folder (Needed):
 	hard4.py - IDE, 4MB
 	hard8.py - IDE, 8MB
@@ -91,6 +95,5 @@ All the custom apps, made by me are located in the
 (Make sure to copy op2api.py in the cwd if the OP2 Version you're running is lower than 0.6)
 
 UpdateLog:
--Added 'configuration' command
--Added 'settings' command
--Updated API
+-Added a new motherboard
+-Added a new custom BIOS (optional)

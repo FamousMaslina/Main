@@ -104,7 +104,11 @@ def main4():
         file_id = hd
         with open("idhd.py", "w") as f:
           f.write("hd = '{}'\n".format(file_id))
-
+def clear():
+    if name == 'nt':
+        _ = system('cls')
+    else:
+        _ = system('clear')
 main3()
 main2()
 main4()
@@ -120,6 +124,17 @@ cpu_module = import_module(module_name)
 mb_module = import_module(module_name2)
 module_name3 = hd.replace('.py', '')
 hd_module = import_module(module_name3)
+clear()
+sup = ["awd486"] 
+if mb_module.bcode == "awd486":
+  pass
+else: 
+  while True:
+    print("BIOS NOT COMPATIBLE WITH MOTHERBOARD!")
+    print("EXPECTED:")
+    for i in sup:
+      print(sup)
+    input("")
 def sleep_time(cFreq):
 
   sleep_time = 55 / cpu_module.cFreq
@@ -134,11 +149,6 @@ biosN = 'ABIOS'
 biosV = "0.1 Rev A"
 biosFN = 'Award Modular BIOS'
 osfile = 'op2.py'
-def clear():
-    if name == 'nt':
-        _ = system('cls')
-    else:
-        _ = system('clear')
 config = ConfigParser()
 try:
     config.read("bios.ini")
