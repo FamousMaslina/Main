@@ -1,1 +1,1 @@
-hd = 'basiclaptop.py'
+hd = 'hard64.py'

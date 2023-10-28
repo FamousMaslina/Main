@@ -247,10 +247,9 @@ def gpu():
 def modem():
     print("Moved to 'hardware' command")
 
-
 def main():
+    batterysave = False
     if cpu_module.laptophardware == True:
-        batterysave = False
         remain = cpu_module.battery
         cscr = 5
     else:
@@ -260,6 +259,13 @@ def main():
     while True:
         inp = input(f"O:/> ")
         inp = inp.lower()
+        if cpu_module.laptophardware == True:
+            if batterysave == True:
+                remain = remain - 0.3 - (cscr / 3)
+            else:
+                remain = remain - 0.5 - (cscr / 3)
+        else:
+            pass
         if inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet', 'api', 'encryp', 'nguess', 'write', 'calc', 'resethardware', 'hardware'):
             eval(inp)()
         elif inp.startswith('run '):
