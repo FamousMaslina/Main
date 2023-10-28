@@ -364,7 +364,14 @@ def main():
                 status = round(remain, 1)
                 print("Remaining Battery Power:",status, "%")
             else:
-               print("Battery not installed+")
+               print("Battery not installed")
+        elif cpu_module.laptophardware == True:
+            if batterysave == True:
+                remain = remain - 0.3 - (cscr / 3)
+            else:
+                remain = remain - 0.5 - (cscr / 3)
+            if remain < 0:
+                exit()
         else:
             print("Unknown command")
 
