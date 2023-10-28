@@ -1,5 +1,4 @@
 import os
-import re
 from importlib import import_module
 try:
     from idgpu import gpu
@@ -18,69 +17,22 @@ try:
 except ImportError as e:
    mdC = False
    pass
+try:
+    from bios import main
+except ImportError as e:
+    while True:
+        print(e)
+        input("SYSTEM HALTED")
 
-
-
-def find_python_files(directory):
-  """Finds all Python files in the specified directory."""
-  files = os.listdir(directory)
-  python_files = []
-  for file in files:
-    if file.endswith(".py"):
-      python_files.append(os.path.join(directory, file))
-  return python_files
-
-def find_variables2(file_path):
-  """Finds all variables in the specified Python file."""
-  variables = []
-  with open(file_path, "r") as f:
-    for line in f:
-      match = re.search(r"(ioaoooss)", line)
-      if match:
-        variables.append(match.group(1))
-  return variables
-def main2():
-  """The main function."""
-  directory = os.getcwd()
-  python_files = find_python_files(directory)
-  for file in python_files:
-    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py" and os.path.basename(file) != "idmb.py" and os.path.basename(file) != "hardwiz.py":
-      variables = find_variables2(file)
-      if variables:
-        print(file, variables)
-        mb = os.path.basename(file)
-        print(mb)
-        file_id = mb
-        with open("idmb.py", "w") as f:
-          f.write("mb = '{}'\n".format(file_id))
-
-main2()
-from idmb import mb
-module_name2 = mb.replace('.py', '')
-mb_module = import_module(module_name2)
-if mb_module.onboardGPU == False:
-    try:
-        from bios import main
-    except ImportError as e:
-        while True:
-            print(e)
-            input("SYSTEM HALTED")
-else:
-    b1 = mb_module.reqBIOS
-    try:
-        from b1 import main
-    except ImportError as e:
-        while True:
-            print(e)
-            input("SYSTEM HALTED")
 from idcpu import cpu
 from idmb import mb
 from idhd import hd
 global intern
 intern = 0
 module_name = cpu.replace('.py', '')  # Remove the .py extension
+module_name2 = mb.replace('.py', '')
 cpu_module = import_module(module_name)
-#mb_module = import_module(module_name2)
+mb_module = import_module(module_name2)
 module_name3 = hd.replace('.py', '')
 hd_module = import_module(module_name3)
 from op2api import *
@@ -94,7 +46,14 @@ if freesp < 2500:
    print("LOW STORAGE!")
    print(freesp, "KB Remaining")
    input("Press enter to continue...")
-
+def find_python_files(directory):
+  """Finds all Python files in the specified directory."""
+  files = os.listdir(directory)
+  python_files = []
+  for file in files:
+    if file.endswith(".py"):
+      python_files.append(os.path.join(directory, file))
+  return python_files
 
 
     
