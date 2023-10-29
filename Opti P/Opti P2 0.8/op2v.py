@@ -1,3 +1,3 @@
-op2VER = "0.7.1"
-op2VERI = 0.7
-op2VERSTRING = "1B"
+op2VER = "0.8"
+op2VERI = 0.8
+op2VERSTRING = "1A"

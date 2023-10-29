@@ -1,1 +1,1 @@
-cpu = 'Intel i486SX-66.py'
+cpu = 'DEC Alpha 21064-275.py'

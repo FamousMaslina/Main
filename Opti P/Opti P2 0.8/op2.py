@@ -1,4 +1,6 @@
 import os
+import time
+global sond
 from importlib import import_module
 try:
     from idgpu import gpu
@@ -9,6 +11,16 @@ try:
 except ImportError:
    gpuC = False
    pass
+try:
+    from idsound import sound
+    module_name6 = sound.replace('.py', '')
+    son_module = import_module(module_name6)
+    sond = True
+except ImportError as sounderror:
+    sond = False
+    print(sounderror)
+    time.sleep(4)
+    pass
 try:
     from idmod import modem
     module_name4 = modem.replace('.py', '')
@@ -27,6 +39,8 @@ except ImportError as e:
 from idcpu import cpu
 from idmb import mb
 from idhd import hd
+from idkey import key
+from idmon import mon
 global intern
 intern = 0
 module_name = cpu.replace('.py', '')  # Remove the .py extension
@@ -35,6 +49,10 @@ cpu_module = import_module(module_name)
 mb_module = import_module(module_name2)
 module_name3 = hd.replace('.py', '')
 hd_module = import_module(module_name3)
+module_name4 = key.replace('.py', '')
+key_module = import_module(module_name4)
+module_name5 = mon.replace('.py', '')
+mon_module = import_module(module_name5)
 from op2api import *
 subprocess.run(["python", "op2api.py"])
 time.sleep(0.1)
@@ -175,7 +193,8 @@ def internet():
     else:
        print("No Modem Found. Run 'modem'")
 
-
+#def audio():
+    
 
 def info():
     print()
@@ -328,35 +347,73 @@ def main():
             time.sleep(sleep_timeAppL)
             print()
             print("Identified Hardware:")
+            linebr(20)
+            time.sleep(sleep_timeIAppL)
+            print("ACPI Based Computer:")
             time.sleep(sleep_timeIAppL)
             print("  Motherboard - "+mb_module.mName)
             time.sleep(sleep_timeIAppL)
             print("  Physical Memory - "+mb_module.mMemS)
             time.sleep(sleep_timeIAppL)
+            linebr2(20)
+
+            print("Processors:")
+            time.sleep(sleep_timeIAppL)
             print("  Processor - "+cpu_module.cName)
             time.sleep(sleep_timeIAppL)
             print("  Processor Speed - "+cpu_module.cFreqS+cpu_module.cFreqUnit)
+            time.sleep(sleep_timeIAppL)
+            linebr2(20)
+
+            print("Storage Devices:")
             time.sleep(sleep_timeIAppL)
             print("  Hard Disk - "+hd_module.hddnameS)
             time.sleep(sleep_timeIAppL)
             print("  Hard Disk Storage - "+hd_module.hddspaceS)
             time.sleep(sleep_timeIAppL)
             print("  Free Hard Disk Storage -",freesp, "KB")
+            linebr2(20)
+
             if gpuC == False:
                 pass
             else:
+                print("Graphics Adapters:")
+                time.sleep(sleep_timeIAppL)
                 print("  Graphic Processor - "+gpu_module.gName)
                 time.sleep(sleep_timeIAppL)
                 print("  Graphic Memory -",gpu_module.gVram, "MB")
                 time.sleep(sleep_timeIAppL)
+                linebr2(20)
+            if sond == False:
+                pass
+            else:
+                print("Sound Devices:")
+                time.sleep(sleep_timeIAppL)
+                print("  Sound Processor - "+son_module.soundName)
+                time.sleep(sleep_timeIAppL)
+                print("  Sound Chip -",son_module.soundChip)
+                time.sleep(sleep_timeIAppL)
+                print("  Sound Digital Format -",son_module.soundDF)
+                time.sleep(sleep_timeIAppL)
+                print("  Stereo Capable -",son_module.stereo)
+                time.sleep(sleep_timeIAppL)
+                linebr2(20)
             if mdC == False:
                 pass
             else:
+                print("Internet Devices:")
+                time.sleep(sleep_timeIAppL)
                 print("  Modem - "+md_module.modemname, "at "+md_module.modemspeeds)
                 time.sleep(sleep_timeIAppL)
                 print("  Dial-Up Adapter -",md_module.dialupadp)
                 time.sleep(sleep_timeIAppL)
+                linebr2(20)
+            print("Display Adapters:")
+            time.sleep(sleep_timeIAppL)
+            print("  Monitor Resolution - "+mon_module.monitorRes, mon_module.monitorHz)
+            linebr2(20)
             print("  Operating System - "+osName, osVersion)
+            linebr(20)
             print()
         elif inp == "var":
            print("osName", osName)
@@ -365,6 +422,7 @@ def main():
            print("gpuC", gpuC)
            print("intern", intern)
            print("VERSTRING:", op2v.op2VERSTRING)
+           print("sond", sond)
         elif inp == "settings":
             if ex == True:
                 cls()

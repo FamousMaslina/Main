@@ -109,13 +109,40 @@ def clear():
         _ = system('cls')
     else:
         _ = system('clear')
+
+def find_variables5(file_path):
+  """Finds all variables in the specified Python file."""
+  variables = []
+  with open(file_path, "r") as f:
+    for line in f:
+      match = re.search(r"(mmmnni)", line)
+      if match:
+        variables.append(match.group(1))
+  return variables
+
+def main5():
+  """The main function."""
+  directory = os.getcwd()
+  python_files = find_python_files(directory)
+  for file in python_files:
+    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py" and os.path.basename(file) != "idmb.py" and os.path.basename(file) != "idhd.py" and os.path.basename(file) != "hardwiz.py":
+      variables = find_variables5(file)
+      if variables:
+        print(file, variables)
+        mon = os.path.basename(file)
+        print(mon)
+        file_id = mon
+        with open("idmon.py", "w") as f:
+          f.write("mon = '{}'\n".format(file_id))
 main3()
 main2()
 main4()
+main5()
 time.sleep(0.2)
 from idcpu import cpu
 from idmb import mb
 from idhd import hd
+from idmon import mon
 from importlib import import_module
 
 module_name = cpu.replace('.py', '')  # Remove the .py extension
@@ -124,6 +151,8 @@ cpu_module = import_module(module_name)
 mb_module = import_module(module_name2)
 module_name3 = hd.replace('.py', '')
 hd_module = import_module(module_name3)
+module_name5 = mon.replace('.py', '')
+mon_module = import_module(module_name5)
 clear()
 sup = ["awd486"] 
 if mb_module.bcode == "awd486":
@@ -146,7 +175,7 @@ def sleep_time2(cFreq):
   return sleep_time
 lbreak = '===================='
 biosN = 'ABIOS'
-biosV = "0.1 Rev A"
+biosV = "0.1 Rev B"
 biosFN = 'Award Modular BIOS'
 osfile = 'op2.py'
 config = ConfigParser()
@@ -316,7 +345,7 @@ try:
 except ImportError:
     pass
 clear()
-print("Award Modular BIOS", biosV, ", An energy star ally")
+print("Award Modular BIOS", biosV, ",An energy star ally")
 print(cpu_module.cFreqS+cpu_module.cFreqUnit, "Processor")
 print()
 
@@ -339,7 +368,7 @@ print("---------------------")
 print("Diskette Drive A: None")
 print("Pri. Master Disk:", hd_module.hddspace, hd_module.hddnameS)
 print("---------------------")
-print("Display Type: EGA/VGA")
+print("Display Type:", mon_module.monitorName)
 print("---------------------")
 
 time.sleep(6)

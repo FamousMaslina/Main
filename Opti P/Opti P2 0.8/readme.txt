@@ -66,13 +66,13 @@ dial.mp3 - SFX File for op2.py (Needed when executing 'internet' in op2.py)
 	modem144.py - Modem, 14.4K
 
 How to?
-Check if the root directory has any cpus or mbs files. If not, Opti P2 will not run. If it dosen't check the 'cpu', 'hdd' and 'mb' folder and
-copy one of the files from there to the root directory where op2.py, bios.py is.
+Check if the root directory has any cpus, mbs, hard, monitors and keyboard files. If not, Opti P2 will not run. If it dosen't check the 'cpu', 'hdd', 'monitors', 'keyboard' and 'mb' folder and copy one of the files from there to the root directory where op2.py, bios.py is.
 Execute op2.py and it should run fine. (Executing bios.py directly will not do anything!)
 After executing op2.py, and you see the O:/>  then it's good to go! Execute the command 'help' for more info.
 When executing op2.py, you'll see the bios loading. If it says bios.ini found, then it's ok. If not, then execute op2.py,
 execute 'bios' and select option 2 by typing '2'. It creates the config file automatically and it should be fine.
 You can also install GPUs or Modem by copying one of the files from the 'gpus' (or modems) folder to the directory where op2.py is!
+Or even sound cards!
 
 CPUs & Motherboards documentation:
 Each CPU and Motherboard is unique in it's way. (For now, just the frequency from the CPU). You can modify any 
@@ -95,5 +95,6 @@ All the custom apps, made by me are located in the
 (Make sure to copy op2api.py in the cwd if the OP2 Version you're running is lower than 0.6)
 
 UpdateLog:
--Added a new motherboard
--Added a new custom BIOS (optional)
+-Added NEW HARDWARE!! (Monitors, Sound Cards, Keyboards)
+-Updated both BIOSes
+-Revamped 'dvcman' command from OP2

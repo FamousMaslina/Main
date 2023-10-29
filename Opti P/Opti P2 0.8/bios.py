@@ -55,6 +55,36 @@ def main3():
         with open("idcpu.py", "w") as f:
           f.write("cpu = '{}'".format(file_id))
 
+
+
+
+def find_variables9(file_path):
+  """Finds all variables in the specified Python file."""
+  variables = []
+  with open(file_path, "r") as f:
+    for line in f:
+      match = re.search(r"(kkeyb)", line)
+      if match:
+        variables.append(match.group(1))
+  return variables
+
+def main9():
+  """The main function."""
+  directory = os.getcwd()
+  python_files = find_python_files(directory)
+  for file in python_files:
+    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "idmb.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py" and os.path.basename(file) != "hardwiz.py":
+      variables = find_variables9(file)
+      if variables:
+        print(file, variables)
+        key = os.path.basename(file)
+        print(key)
+        file_id = key
+        with open("idkey.py", "w") as f:
+          f.write("key = '{}'".format(file_id))
+
+
+
 def find_variables2(file_path):
   """Finds all variables in the specified Python file."""
   variables = []
@@ -105,13 +135,42 @@ def main4():
         with open("idhd.py", "w") as f:
           f.write("hd = '{}'\n".format(file_id))
 
+def find_variables5(file_path):
+  """Finds all variables in the specified Python file."""
+  variables = []
+  with open(file_path, "r") as f:
+    for line in f:
+      match = re.search(r"(mmmnni)", line)
+      if match:
+        variables.append(match.group(1))
+  return variables
+
+def main5():
+  """The main function."""
+  directory = os.getcwd()
+  python_files = find_python_files(directory)
+  for file in python_files:
+    if os.path.basename(file) != "identifier.py" and os.path.basename(file) != "op2.py" and os.path.basename(file) != "bios.py" and os.path.basename(file) != "idmb.py" and os.path.basename(file) != "idhd.py" and os.path.basename(file) != "hardwiz.py":
+      variables = find_variables5(file)
+      if variables:
+        print(file, variables)
+        mon = os.path.basename(file)
+        print(mon)
+        file_id = mon
+        with open("idmon.py", "w") as f:
+          f.write("mon = '{}'\n".format(file_id))
+
 main3()
 main2()
 main4()
+main9()
+main5()
 time.sleep(0.2)
 from idcpu import cpu
 from idmb import mb
 from idhd import hd
+from idkey import key
+from idmon import mon
 from importlib import import_module
 
 module_name = cpu.replace('.py', '')  # Remove the .py extension
@@ -120,6 +179,10 @@ cpu_module = import_module(module_name)
 mb_module = import_module(module_name2)
 module_name3 = hd.replace('.py', '')
 hd_module = import_module(module_name3)
+module_name4 = key.replace('.py', '')
+key_module = import_module(module_name4)
+module_name5 = mon.replace('.py', '')
+mon_module = import_module(module_name5)
 def sleep_time(cFreq):
 
   sleep_time = 55 / cpu_module.cFreq
@@ -131,7 +194,7 @@ def sleep_time2(cFreq):
   return sleep_time
 lbreak = '===================='
 biosN = 'LBIOS'
-biosV = "0.4 Rev A"
+biosV = "0.5 Rev A"
 biosFN = 'LegacyBIOS'
 osfile = 'op2.py'
 def clear():

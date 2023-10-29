@@ -13,7 +13,7 @@ except ImportError:
     pass
     version = False
 global vers
-vers = 0.1
+vers = 0.2
 global total
 total = 0
 import re
@@ -80,10 +80,39 @@ def mainM():
           global mdC
           mdC = True
 
+def find_variables5(file_path):
+  """Finds all variables in the specified Python file."""
+  variables = []
+  with open(file_path, "r") as f:
+    for line in f:
+      match = re.search(r"(ssundc)", line)
+      if match:
+        variables.append(match.group(1))
+  return variables
+
+def mainS():
+  """The main function."""
+  directory = api.os.getcwd()
+  python_files = find_python_files(directory)
+  for file in python_files:
+    if api.os.path.basename(file) != "op2.py" and api.os.path.basename(file) != "idmod.py" and api.os.path.basename(file) != "bios.py" and api.os.path.basename(file) != "op2api.py" and api.os.path.basename(file) != "hardwiz.py": 
+      variables = find_variables5(file)
+      if variables:
+        print(file, variables)
+        sound = api.os.path.basename(file)
+        print(sound)
+        file_id = sound
+        with open("idsound.py", "w") as f:
+          f.write("sound = '{}'".format(file_id))
+          global sC
+          sc = True
+
 global mod
 mod = False
 global gpu
 gp = False
+global sd
+sd = False
 def gpu():
     print(api.gpuC)
     if api.gpuC == False:
@@ -100,6 +129,23 @@ def gpu():
     else:
        api.time.sleep(api.sleep_timeAppL)
        print("GPU already dectected")
+
+def isc():
+    print(api.souC)
+    if api.souC == False:
+        try:
+            api.os.remove('idsound.py')
+        except FileNotFoundError:
+           pass
+        api.time.sleep(api.sleep_timeAppL)
+        print("Detecting Sound Card...")
+        mainS()
+        api.time.sleep(api.sleep_timeIAppL)
+        api.time.sleep(0.1)
+        sd = True
+    else:
+       api.time.sleep(api.sleep_timeAppL)
+       print("Sound Card already dectected")
 
 def modem():
     
@@ -128,6 +174,7 @@ def main():
     api.linebr(20)
     gpu()
     modem()
+    isc()
     api.time.sleep(api.sleep_timeIAppL)
     api.linebr(20)
     input("Press enter to exit... (Make sure to restart OP2)")
