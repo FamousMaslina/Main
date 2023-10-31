@@ -60,6 +60,11 @@ import re
 clear()
 freesp = hd_module.hddspace - space
 freesp = round(freesp, 2)
+if cpu_module.cFreq < 4.7:
+    print("Your CPU, does not meet the minnimum requirments!")
+    print("Expected Atleast 4.77Mhz! Idendtified:", cpu_module.cFreqS)
+    input("Press enter to exit...")
+    exit()
 if freesp < 2500:
    print("LOW STORAGE!")
    print(freesp, "KB Remaining")
@@ -181,7 +186,14 @@ def internet():
     if mdC == True:
         if intern == 0:
             import playsound as ps
+            print("Enter the User to log into your ISP")
+            user = input("> ")
+            print()
+            print("Enter the Password to log into your ISP")
+            passw = input("> ")
+            print()
             print("Connecting to internet via", md_module.modemname, "with", md_module.dialupadp+"...")
+            print("As:", user)
             try:
                 ps.playsound('dial.mp3')
             except FileNotFoundError:
@@ -192,6 +204,7 @@ def internet():
             print("Already connected!")
     else:
        print("No Modem Found. Run 'modem'")
+
 
 #def audio():
     
@@ -237,28 +250,40 @@ def help():
     time.sleep(sleep_timeAppL)
     print()
     print("Commands:")
+    linebr(20)
+    print("OS Related:")
     print("  info - Display information about the OS")
     print("  cls - Clear the screen")
-    print("  bios - Enter the BIOS")
+    print("  configuration - Create the configuration file for OP2")
+    print("  settings - Change settings from the configuration file")
+    print("  restart - Restart OP2")
+    print("  exit - Exit the OS and the CMD")
+    linebr2(20)
+    print("File/Directory Managment:")
     print("  run [FILENAME.EXTENSION] - Run other files (Only Python files work)")
     print("  open [FILENAME.EXTENSION] - Open other files to read their contents (Any files work)")
     print("  dir - Show files in the current working directory (CWD)")
-    print("  dvcman - Current Installed Hardware")
-    print("  exit - Exit the OS and the CMD")
-    print("  gpu - Moved to 'hardware' command")
-    print("  gpuinfo - Extra information about the current installed GPU")
-    print("  modem - Moved to 'hardware' command")
-    print("  internet - Connect to the Internet")
+    linebr2(20)
+    print("Applications:")
     print("  encryp - Encrypt Strings into numbers")
     print("  nguess - Play a little game (Expects API Version 0.2)")
     print("  write - Write Text Files")
     print("  calc - Calculator")
+    print("  internet - Connect to the Internet")
+    linebr2(20)
+    print("Hardware Related:")
+    print("  hardware - Identify GPUs and Modems")
+    print("  resethardware - Delete idgpu and idmod")
+    print("  gpuinfo - Extra information about the current installed GPU")
+    print("  dvcman - Current Installed Hardware")
+    linebr2(20)
+    print("API Related:") 
     print("  api - Check API version")
     print("  api /? - Check API's help")
-    print("  resethardware - Delete idgpu and idmod")
-    print("  hardware - Identify GPUs and Modems")
-    print("  configuration - Create the configuration file for OP2")
-    print("  settings - Change settings from the configuration file")
+    linebr2(20)
+    print("Advanced:") 
+    print("  bios - Enter the BIOS")
+    linebr(20)
     print()
 
 def bios():

@@ -1,4 +1,4 @@
-Opti P2 - an "OS" made in Python. (written for Version 0.7.1| API Version 0.5)
+Opti P2 - an "OS" made in Python. (written for Version 0.8| API Version 0.5)
 
 made for fun, of course, and it's pretty nice, tbh. It's inspired by MSDOS and so on.
 

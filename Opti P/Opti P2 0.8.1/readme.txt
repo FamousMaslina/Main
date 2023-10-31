@@ -1,4 +1,4 @@
-Opti P2 - an "OS" made in Python. (written for Version 0.7.1| API Version 0.5)
+Opti P2 - an "OS" made in Python. (written for Version 0.8.1| API Version 0.5)
 
 made for fun, of course, and it's pretty nice, tbh. It's inspired by MSDOS and so on.
 
@@ -95,6 +95,5 @@ All the custom apps, made by me are located in the
 (Make sure to copy op2api.py in the cwd if the OP2 Version you're running is lower than 0.6)
 
 UpdateLog:
--Added NEW HARDWARE!! (Monitors, Sound Cards, Keyboards)
--Updated both BIOSes
--Revamped 'dvcman' command from OP2
+-Revamped 'internet' and 'help' command
+-Added minimum system requirments! (4.77MHz minimum)
