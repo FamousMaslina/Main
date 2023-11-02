@@ -22,6 +22,14 @@ except ImportError:
    gpuC = False
    pass
 try:
+    from idsound import sou
+    module_name6 = sou.replace('.py', '')
+    son_module = import_module(module_name6)
+    souC = True
+except ImportError:
+   souC = False
+   pass
+try:
     from idmod import modem
     module_name4 = modem.replace('.py', '')
     md_module = import_module(module_name4)
@@ -97,6 +105,8 @@ sleep_timeIAppL = sleep_timeInAppLoad(cpu_module.cFreq)
 
 def linebr(number):
    print("=" * number)
+def linebr2(number):
+   print("-" * number)
 
 def configFile(var, filename):
     var = ConfigParser()
