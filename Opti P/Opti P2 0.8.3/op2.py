@@ -283,6 +283,8 @@ def help():
     print("  calc - Calculator")
     print("  internet - Connect to the Internet")
     print("  virtualcommand - Emulate Py OS or Py OS 2")
+    print("  omclient - Launch Opti Messager (if installed)")
+    print("  omserver - Start a server for Opti Messager (if installed)")
     linebr2(20)
     print("Hardware Related:")
     print("  hardware - Identify GPUs, Modems, Sound Cards")
@@ -310,6 +312,21 @@ def encryp():
         subprocess.run(["python", 'encryp.py'])
    except FileNotFoundError:
       pass
+   
+def omclient():
+   try:
+        subprocess.run(["python", 'client.py'])
+   except FileNotFoundError:
+      print("Opti Messager was not found!")
+      pass
+   
+def omserver():
+   try:
+        subprocess.run(["python", 'server.py'])
+   except FileNotFoundError:
+      print("Opti Messager Server was not found!")
+      pass
+
 
 def hardware():
    try:
@@ -363,7 +380,7 @@ def mainOS():
     while True:
         inp = input(f"O:/> ")
         inp = inp.lower()
-        if inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet', 'api', 'encryp', 'nguess', 'write', 'calc', 'resethardware', 'hardware', 'configuration', 'virtualcommand'):
+        if inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet', 'api', 'encryp', 'nguess', 'write', 'calc', 'resethardware', 'hardware', 'configuration', 'virtualcommand', 'omclient', 'omserver'):
             eval(inp)()
         elif inp.startswith('run '):
             run_file(inp[4:])
