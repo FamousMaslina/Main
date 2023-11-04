@@ -18,8 +18,6 @@ try:
     sond = True
 except ImportError as sounderror:
     sond = False
-    print(sounderror)
-    time.sleep(4)
     pass
 try:
     from idmod import modem
