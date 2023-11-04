@@ -83,4 +83,5 @@ def main():
     else:
         print("Invalid car choice. Please choose a valid car.")
 main()
+input()
 
