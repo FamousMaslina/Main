@@ -285,7 +285,7 @@ def help():
     print("  virtualcommand - Emulate Py OS or Py OS 2")
     linebr2(20)
     print("Hardware Related:")
-    print("  hardware - Identify GPUs and Modems")
+    print("  hardware - Identify GPUs, Modems, Sound Cards")
     print("  resethardware - Delete idgpu, idmod and idsound")
     print("  gpuinfo - Extra information about the current installed GPU")
     print("  dvcman - Current Installed Hardware")
