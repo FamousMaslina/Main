@@ -194,7 +194,7 @@ def sleep_time2(cFreq):
   return sleep_time
 lbreak = '===================='
 biosN = 'LBIOS'
-biosV = "0.5 Rev A"
+biosV = "0.6"
 biosFN = 'LegacyBIOS'
 osfile = 'op2.py'
 def clear():
@@ -203,11 +203,11 @@ def clear():
     else:
         _ = system('clear')
 config = ConfigParser()
-try:
-    config.read("bios.ini")
-    settings = config["bios"]
-except FileNotFoundError:
-    pass
+if os.path.exists('bios.ini'):
+  config.read("bios.ini")
+  settings = config["bios"]
+else:
+   pass
 conf = 'bios.ini'
 init(autoreset=True)
 bios = 0
@@ -379,16 +379,17 @@ print(biosFN, biosV, "loading...")
 time.sleep(sleep_time)
 clear()
 memcheck = 1
-if settings["mem_check"] == "1":
-    while memcheck < mb_module.mMem:
-        print(biosFN, biosV, "loading...")
-        print("Detected memory:", mb_module.mMem, "KB")
-        print(memcheck, "OK")
-        time.sleep(sleep_time2)
-        memcheck = memcheck + 100
-        clear()
-else:
-    pass
+if os.path.exists('bios.ini'):
+  if settings["mem_check"] == "1":
+      while memcheck < mb_module.mMem:
+          print(biosFN, biosV, "loading...")
+          print("Detected memory:", mb_module.mMem, "KB")
+          print(memcheck, "OK")
+          time.sleep(sleep_time2)
+          memcheck = memcheck + 100
+          clear()
+  else:
+      pass
 
 import op2
 if os.path.exists(conf):
