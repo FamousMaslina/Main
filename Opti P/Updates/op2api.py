@@ -45,7 +45,7 @@ except ImportError:
    print("OP2V Not Found! Legacy Mode Enabled!")
    lega = True
 apiver = "0.5"
-apiverI = 0.5
+apiverI = 0.6
 compver = "0.6"
 compver2 = "0.6 R2"
 compver3 = "0.6.1"
@@ -174,7 +174,7 @@ def interface():
         input("Press enter to return...")
       elif inter == "2":
         linebr(20)
-        print("Fixed a MAJOR bug")
+        print("Added Update Tool for OP2 (available for 0.8.5 and up)")
         input("Press enter to return...")
       elif inter == "3":
          clear()

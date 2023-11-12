@@ -97,6 +97,8 @@ sleep_timeIAppL = sleep_timeInAppLoad(cpu_module.cFreq)
 
 def linebr(number):
    print("=" * number)
+def linebr2(number):
+   print("-" * number)
 
 def configFile(var, filename):
     var = ConfigParser()

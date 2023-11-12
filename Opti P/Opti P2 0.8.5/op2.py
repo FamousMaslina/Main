@@ -512,16 +512,19 @@ def mainOS():
         elif inp == "api.update":
             if intern == 1:
                 print()
+                os.remove('op2api.py')
                 print("Contacting Server...")
                 time.sleep(2)
                 print("Downloading...")
-                u1 = "https://raw.githubusercontent.com/FamousMaslina/Main/main/Opti%20P/Opti%20P2%200.8.3/op2.py"
+                u1 = "https://raw.githubusercontent.com/FamousMaslina/Main/main/Opti%20P/Updates/op2api.py"
                 response = requests.get(u1)
                 print("op2api.py...")
                 print()
                 with open("op2api.py", "wb") as f:
                     f.write(response.content)
                     f.close()
+                print("COMPLETED!")
+                print()
         else:
             print("Unknown command")
 
