@@ -298,6 +298,7 @@ def help():
     print("API Related:") 
     print("  api - Check API version")
     print("  api /? - Check API's help")
+    print("  api.update - Update the API")
     linebr2(20)
     print("Advanced:") 
     print("  bios - Enter the BIOS")
@@ -524,6 +525,7 @@ def mainOS():
                     f.write(response.content)
                     f.close()
                 print("COMPLETED!")
+                print("Make sure to restart...")
                 print()
         else:
             print("Unknown command")
