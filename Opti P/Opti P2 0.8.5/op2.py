@@ -64,6 +64,10 @@ if cpu_module.cFreq < 4.7:
     print("Expected Atleast 4.77Mhz! Idendtified:", cpu_module.cFreqS)
     input("Press enter to exit...")
     exit()
+if freesp < 2500:
+   print("LOW STORAGE!")
+   print(freesp, "KB Remaining")
+   input("Press enter to continue...")
 def find_python_files(directory):
   """Finds all Python files in the specified directory."""
   files = os.listdir(directory)
@@ -76,7 +80,7 @@ def find_python_files(directory):
 
     
 import op2v
-osName = "PTOS"
+osName = "Opti P2"
 osVersion = op2v.op2VER
 clear()
 check()
@@ -92,17 +96,17 @@ def api():
 
 def restart():
     time.sleep(sleep_timeAppL)
-    os.system("ptos.py")
+    os.system("op2.py")
     exit()
 config = ConfigParser()
 global ex
 ex = False
-if os.path.exists('ptos.ini'):
+if os.path.exists('op2.ini'):
     ex = True
 else:
     ex = False
 def configuration():
-    conf = 'ptos.ini'
+    conf = 'op2.ini'
     if ex == False:
         while True:
             print(conf, "not found. Create new one? Y/N ")
@@ -111,7 +115,7 @@ def configuration():
             if bioscr == "y":
                 config.add_section('user')
                 config.set('user', 'computer_name', 'DEFAULT')
-                with open("ptos.ini", 'w') as configfile:
+                with open("op2.ini", 'w') as configfile:
                     config.write(configfile)
                 print("Closing to apply changes. Created", conf)
                 time.sleep(3.5)
@@ -128,7 +132,7 @@ def configuration():
             break
 if ex == True:
     try:
-        config.read("ptos.ini")
+        config.read("op2.ini")
         settings = config["user"]
         ex = True
     except FileNotFoundError:
@@ -143,6 +147,7 @@ def cls():
         _ = system('clear')
 
 
+
 def open_text(file_name):
     
     if os.path.isfile(file_name):
@@ -152,11 +157,54 @@ def open_text(file_name):
     else:
         print(f"File '{file_name}' not found.")
 
+def gpuinfo():
+    time.sleep(sleep_timeIAppL)
+    print()
+    if gpuC == False:
+        print("GPU not detected. Run 'gpu' to detect.")
+    else:
+        print("Current Installed GPU information:")
+        print("  Graphic Processor - "+gpu_module.gName)
+        time.sleep(sleep_timeIAppL)
+        print("  Graphic Memory -",gpu_module.gVram, "MB")
+        time.sleep(sleep_timeIAppL)
+        print("  Graphic Processor Frequency -",gpu_module.gSpeedS)
+        time.sleep(sleep_timeIAppL)
+        print("  Pixel Shaders -",gpu_module.gps)
+        time.sleep(sleep_timeIAppL)
+        print("  Vertex Shaders -",gpu_module.gvs)
+        time.sleep(sleep_timeIAppL)
+        print("  ROPs -",gpu_module.grop)
+        print()
 
 def nameO():
     print(osName, osVersion)
 
 
+def internet():
+    global intern
+    time.sleep(sleep_timeAppL)
+    if mdC == True:
+        if intern == 0:
+            import playsound as ps
+            print("Enter the User to log into your ISP")
+            user = input("> ")
+            print()
+            print("Enter the Password to log into your ISP")
+            passw = input("> ")
+            print()
+            print("Connecting to internet via", md_module.modemname, "with", md_module.dialupadp+"...")
+            print("As:", user)
+            try:
+                ps.playsound('dial.mp3')
+            except FileNotFoundError:
+               pass
+            print("CONNECTED!")
+            intern = 1
+        elif intern == 1:
+            print("Already connected!")
+    else:
+       print("No Modem Found. Run 'modem'")
 
 
 #def audio():
@@ -167,8 +215,6 @@ def info():
     nameO()
     time.sleep(sleep_timeIAppL)
     print("Build", op2v.op2VERSTRING)
-    print("Built on OP2 Kernel")
-    print("Kernel Version:", op2v.op2VERI)
     time.sleep(sleep_timeIAppL)
     if ex == True:
         print("Computer name: {}".format(settings["computer_name"]))
@@ -178,7 +224,40 @@ def info():
     print(cpu_module.cName, "running at", cpu_module.cFreqS+cpu_module.cFreqUnit)
     print()
 
+def resethardware():
+    delgpu = False
+    delmod = False
+    delsou = False
+    try:
+      os.remove('idmod.py')
+      delmod = True
+    except FileNotFoundError:
+       pass
+    try:
+       os.remove('idsound.py')
+       delsou = True
+    except FileNotFoundError:
+       pass
+    try:
+       os.remove('idgpu.py')
+       delsou = True
+    except FileNotFoundError:
+       pass
+    print()
+    print("Deleted:")
+    print("GPU", delgpu)
+    print("Modem", delmod)
+    print("Sound Card", delsou)
+    print()
+    restart()
 
+
+
+def virtualcommand():
+   try:
+        subprocess.run(["python", 'vcom.py'])
+   except FileNotFoundError:
+      pass   
 
 
 def help():
@@ -189,9 +268,9 @@ def help():
     print("OS Related:")
     print("  info - Display information about the OS")
     print("  cls - Clear the screen")
-    print("  configuration - Create the configuration file for PTOS")
+    print("  configuration - Create the configuration file for OP2")
     print("  settings - Change settings from the configuration file")
-    print("  restart - Restart PTOS")
+    print("  restart - Restart OP2")
     print("  exit - Exit the OS and the CMD")
     linebr2(20)
     print("File/Directory Managment:")
@@ -201,10 +280,19 @@ def help():
     print("  del [FILENAME.EXTENSION] - Delete Files")
     linebr2(20)
     print("Applications (some of them cannot exist, due to your install options or version/build):")
+    print("  encryp - Encrypt Strings into numbers")
+    print("  nguess - Play a little game (Expects API Version 0.2)")
+    print("  write - Write Text Files")
     print("  calc - Calculator")
+    print("  internet - Connect to the Internet")
+    print("  virtualcommand - Emulate Py OS or Py OS 2 (if installed)")
+    print("  omclient - Launch Opti Messager (if installed)")
+    print("  omserver - Start a server for Opti Messager (if installed)")
     linebr2(20)
     print("Hardware Related:")
     print("  hardware - Identify GPUs, Modems, Sound Cards")
+    print("  resethardware - Delete idgpu, idmod and idsound")
+    print("  gpuinfo - Extra information about the current installed GPU")
     print("  dvcman - Current Installed Hardware")
     linebr2(20)
     print("API Related:") 
@@ -217,17 +305,38 @@ def help():
     linebr(20)
     print()
 
-def hardware():
-   try:
-        subprocess.run(["python", 'hardwiz.py'])
-   except FileNotFoundError:
-      pass
 def bios():
     time.sleep(sleep_timeAppL)
     clear()
     from bios import main
     main()
 
+def encryp():
+   try:
+        subprocess.run(["python", 'encryp.py'])
+   except FileNotFoundError:
+      pass
+   
+def omclient():
+   try:
+        subprocess.run(["python", 'client.py'])
+   except FileNotFoundError:
+      print("Opti Messager was not found!")
+      pass
+   
+def omserver():
+   try:
+        subprocess.run(["python", 'server.py'])
+   except FileNotFoundError:
+      print("Opti Messager Server was not found!")
+      pass
+
+
+def hardware():
+   try:
+        subprocess.run(["python", 'hardwiz.py'])
+   except FileNotFoundError:
+      pass
 
 def run_file(file_name):
     try:
@@ -243,12 +352,24 @@ def del_file(file_name):
         os.remove(file_name)
     except FileNotFoundError:
         print("File not found.")
+def nguess():
+   try:
+        subprocess.run(["python", 'nguess.py'])
+   except FileNotFoundError:
+      pass
+   clear()
+
+def write():
+   try:
+        subprocess.run(["python", 'write.py'])
+   except FileNotFoundError:
+      pass
 
 def calc():
   clear()
   print("Type '0000' to exit.")
   while True:
-    calci = input("P:/int/> ")
+    calci = input("O:/int/> ")
     result = eval(calci)
     if result == 0000:
        clear()
@@ -257,16 +378,19 @@ def calc():
         print("=", result)
     print()
 
-
+def gpu():
+    print("Moved to 'hardware' command")
+def modem():
+    print("Moved to 'hardware' command")
 
 
 def mainOS():
     clear()
     nameO()
     while True:
-        inp = input(f"P:/> ")
+        inp = input(f"O:/> ")
         inp = inp.lower()
-        if inp in ('bios', 'info', 'cls', 'exit', 'restart', 'api','calc', 'configuration', 'help', 'hardware'):
+        if inp in ('bios', 'info', 'cls', 'exit', 'help', 'gpu', 'restart', 'gpuinfo', 'modem', 'internet', 'api', 'encryp', 'nguess', 'write', 'calc', 'resethardware', 'hardware', 'configuration', 'virtualcommand', 'omclient', 'omserver'):
             eval(inp)()
         elif inp.startswith('run '):
             run_file(inp[4:])
@@ -274,7 +398,7 @@ def mainOS():
             del_file(inp[4:])
         elif inp == 'dir':
             time.sleep(sleep_timeAppL)
-            print("Current directory: P:\\")
+            print("Current directory: O:\\")
             files = os.listdir(".")
             for f in files:
                 file_type = os.path.isfile(f) and "File" or "Folder"
@@ -386,7 +510,6 @@ def mainOS():
                         break
                     elif ch == "2":
                         break
-
         elif inp == "api.update":
             if intern == 1:
                 print()
@@ -406,6 +529,7 @@ def mainOS():
                 print()
         else:
             print("Unknown command")
+
 
 try:
     import op2api
