@@ -48,5 +48,8 @@ All the custom apps, made by me are located in the
 (Make sure to copy op2api.py in the cwd if the OP2 Version you're running is lower than 0.6)
 
 UpdateLog:
+-----1A-----
 -Added floppy drives
 -Added ':a [FILENAME.EXTENSION]' command
+-----1B-----
+-Updated 'help'

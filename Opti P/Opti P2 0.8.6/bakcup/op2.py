@@ -307,23 +307,6 @@ def help():
     print("  virtualcommand - Emulate Py OS or Py OS 2 (if installed)")
     print("  omclient - Launch Opti Messager (if installed)")
     print("  omserver - Start a server for Opti Messager (if installed)")
-    print()
-    print("'2' - Page 2")
-    print("'exit' - exit help")
-    hlp = input("> ")
-    hlp = hlp.lower()
-    if hlp == "exit":
-        print()
-        pass
-    elif hlp == "2":
-        clear()
-        help2()
-    else:
-        print()
-        pass
-
-def help2():
-    time.sleep(sleep_timeAppL)
     linebr2(20)
     print("Hardware Related:")
     print("  hardware - Identify GPUs, Modems, Sound Cards")
@@ -340,19 +323,6 @@ def help2():
     print("  bios - Enter the BIOS")
     linebr(20)
     print()
-    print("'1' - Page 1")
-    print("'exit' - exit help")
-    hlp = input("> ")
-    hlp = hlp.lower()
-    if hlp == "exit":
-        print()
-        pass
-    elif hlp == "1":
-        clear()
-        help()
-    else:
-        print()
-        pass
 
 def bios():
     time.sleep(sleep_timeAppL)
